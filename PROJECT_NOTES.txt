@@ -1,0 +1,18 @@
+framework
+    laravel
+    bootstrap
+
+library
+    jQuery
+    bootstrap
+    iqbalatma/laravel-extend
+    sweetalert
+
+
+tools
+    DBdiagram
+    tableplus
+    vscode
+
+database
+    mysql
