@@ -53,7 +53,7 @@
                     <div class="text-center mt-5 text-lg fs-4">
                         <p class="text-gray-600">
                             Don't have an account?
-                            <a href="auth-register.html" class="font-bold">Sign up</a>.
+                            <a href="{{ route('registration.create') }}" class="font-bold">Sign up</a>.
                         </p>
                         <p>
                             <a class="font-bold" href="{{ route('forgot.password.index') }}">Forgot password?</a>.

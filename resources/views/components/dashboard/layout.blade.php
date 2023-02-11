@@ -12,8 +12,6 @@
     <link rel="shortcut icon" href="{{ asset('mazer/assets/images/logo/favicon.png') }}" type="image/png" />
     <link rel="stylesheet" href="{{ asset('mazer/assets/css/shared/iconly.css') }}">
 
-
-    {{-- <link rel="stylesheet" href="{{ asset('css/app.css') }}"> --}}
     @yield("custom-heads")
 </head>
 
@@ -60,7 +58,6 @@
     </div>
 
 
-    {{-- <script src="{{ asset('js/app.js') }}"></script> --}}
     <script src="{{ asset('mazer/assets/js/bootstrap.js') }}"></script>
     <script src="{{ asset('mazer/assets/js/app.js') }}"></script>
     @yield("custom-scripts")
