@@ -4,38 +4,33 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\AuthenticateRequest;
+use App\Services\Auth\AuthService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    public function login()
+    public function login(AuthService $service)
     {
-        $data = [
-            "title" => "Login"
-        ];
-        return view('auth.login', $data);
+        return view('auth.login', $service->getDataLogin());
     }
 
-    public function authenticate(AuthenticateRequest $request): RedirectResponse
+    public function authenticate(AuthService $service, AuthenticateRequest $request): RedirectResponse
     {
-        if (Auth::attempt($request->only("email", "password"), $request->input('rememberme', false))) {
-            $request->session()->regenerate();
+        $response = $service->authenticate($request->validated());
 
-            return redirect()->intended('dashboard');
-        }
+        if ($this->isError($response))
+            return $this->getErrorResponse();
 
-        return back()->with('failed', 'Username or password is invalid',)->onlyInput('email');
+        $request->session()->regenerate();
+        return redirect()->intended('dashboard');
     }
 
-    public function logout(Request $request)
+    public function logout(AuthService $service, Request $request)
     {
-        Auth::logout();
-
+        $service->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-
         return redirect()->route("auth.login");
     }
 }

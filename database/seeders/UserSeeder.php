@@ -21,7 +21,6 @@ class UserSeeder extends Seeder
             "email" => "iqbalatma@gmail.com",
             "email_verified_at" => now(),
             "password" => Hash::make("admin"),
-            "role_id" => 1
         ]);
         User::factory()->count(100)->create();
     }
