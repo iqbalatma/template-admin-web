@@ -2,9 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Role;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Schema;
+use Spatie\Permission\Models\Role;
 
 class RoleSeeder extends Seeder
 {
@@ -17,15 +18,18 @@ class RoleSeeder extends Seeder
     {
         $dataRole = [
             [
-                'name' => 'Superadmin',
+                'name' => 'superadmin',
             ],
             [
-                'name' => 'Admin',
+                'name' => 'admin',
             ],
             [
-                'name' => 'Operator',
+                'name' => 'regular_user',
             ],
         ];
+        Schema::disableForeignKeyConstraints();
+        Role::truncate();
+        Schema::enableForeignKeyConstraints();
 
         foreach ($dataRole as $key => $role) {
             Role::create($role);
