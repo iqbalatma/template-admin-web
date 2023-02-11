@@ -7,13 +7,11 @@ use App\Http\Requests\Auth\AuthenticateRequest;
 use App\Services\Auth\AuthService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
     public function login(AuthService $service)
     {
-
         return view('auth.login', $service->getDataLogin());
     }
 
@@ -28,9 +26,11 @@ class AuthController extends Controller
         return redirect()->intended('dashboard');
     }
 
-    public function logout(AuthService $service)
+    public function logout(AuthService $service, Request $request)
     {
         $service->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
         return redirect()->route("auth.login");
     }
 }

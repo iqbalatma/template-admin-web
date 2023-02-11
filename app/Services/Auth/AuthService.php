@@ -2,14 +2,13 @@
 
 namespace App\Services\Auth;
 
-use App\Interfaces\Auth\AuthInterface;
-use Exception;
-use Illuminate\Http\Request;
+use App\Interfaces\Auth\AuthServiceInterface;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Iqbalatma\LaravelExtend\BaseService;
 
 
-class AuthService extends BaseService implements AuthInterface
+class AuthService extends BaseService implements AuthServiceInterface
 {
     /**
      * @param array $requestedData
@@ -39,8 +38,5 @@ class AuthService extends BaseService implements AuthInterface
     public function logout(): void
     {
         Auth::logout();
-        $request = request();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
     }
 }

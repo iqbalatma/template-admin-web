@@ -23,7 +23,7 @@ class Controller extends BaseController
     {
         if (!$response["success"]) {
             $this->setErrorResponse(
-                redirect()->back()->withErrors($response["message"])->withInput()
+                redirect()->back()->withErrors(["errors" => $response["message"]])->withInput()
             );
             return true;
         }
