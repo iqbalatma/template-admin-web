@@ -186,6 +186,7 @@ return [
          * Package Service Providers...
          */
         Spatie\Permission\PermissionServiceProvider::class,
+        Iqbalatma\LaravelTelegramBotChannelAsync\Providers\TelegramBotChannelServiceProvider::class,
 
         /*
          * Application Service Providers...
