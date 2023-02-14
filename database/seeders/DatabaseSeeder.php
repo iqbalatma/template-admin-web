@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Log;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,13 +15,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call([
-            UserSeeder::class,
-        ]);
-
+        Log::notice("Database seeder is running");
         $this->call([
             RoleSeeder::class,
             PermissionSeeder::class
+        ]);
+        $this->call([
+            UserSeeder::class,
         ]);
     }
 }

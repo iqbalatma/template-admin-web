@@ -31,6 +31,13 @@
         </div>
         <div class="sidebar-menu">
             <ul class="menu" id="sidebar-menu">
+                <li class="sidebar-title">Managements</li>
+                <li class="sidebar-item">
+                    <a href="{{ route('permissions.index') }}" class="sidebar-link">
+                        <i class="bi bi-person-fill-lock"></i>
+                        <span>Permissions</span>
+                    </a>
+                </li>
                 <li class="sidebar-title">Menu</li>
                 <li class="sidebar-item">
                     <a href="{{ route('dashboard.index') }}" class="sidebar-link">

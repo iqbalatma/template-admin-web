@@ -1,8 +1,13 @@
 <?php
 
+use Iqbalatma\LaravelTelegramBotChannelAsync\TelegramBotHandler;
+use Iqbalatma\LaravelTelegramBotChannelAsync\TelegramFormatter;
+use Iqbalatma\LaravelTelegramBotChannelAsync\TelegramLogger;
+use Iqbalatma\LaravelTelegramBotChannelAsync\TelegramProcessor;
 use Monolog\Handler\NullHandler;
 use Monolog\Handler\StreamHandler;
 use Monolog\Handler\SyslogUdpHandler;
+use Monolog\Handler\TelegramBotHandler as HandlerTelegramBotHandler;
 
 return [
 
@@ -53,7 +58,7 @@ return [
     'channels' => [
         'stack' => [
             'driver' => 'stack',
-            'channels' => ['single'],
+            'channels' => ['single', 'telegram'],
             'ignore_exceptions' => false,
         ],
 
@@ -85,7 +90,7 @@ return [
             'handler_with' => [
                 'host' => env('PAPERTRAIL_URL'),
                 'port' => env('PAPERTRAIL_PORT'),
-                'connectionString' => 'tls://'.env('PAPERTRAIL_URL').':'.env('PAPERTRAIL_PORT'),
+                'connectionString' => 'tls://' . env('PAPERTRAIL_URL') . ':' . env('PAPERTRAIL_PORT'),
             ],
         ],
 
@@ -117,6 +122,26 @@ return [
         'emergency' => [
             'path' => storage_path('logs/laravel.log'),
         ],
+        // 'telegram' => [
+        //     'driver' => 'monolog',
+        //     'level' => 'debug',
+        // HandlerTelegramBotHandler::class
+        //     'handler' => TelegramBotHandler::class,
+        //     'handler' => HandlerTelegramBotHandler::class,
+        //     'with' => [
+        //         'api_key' => env('TELEGRAM_APP_KEY'),
+        //         'channel_id' => env('TELEGRAM_CHANNEL'),
+        //     ],
+        //     'formatter' => TelegramFormatter::class,
+        // ],
+        "telegram" => [
+            "driver" => "custom",
+            "via" => new TelegramLogger(env('TELEGRAM_APP_KEY'), env('TELEGRAM_CHANNEL'), true),
+            "with" => [
+                "apiKey" => env('TELEGRAM_APP_KEY'),
+                "channelId" => env('TELEGRAM_CHANNEL')
+            ]
+        ]
     ],
 
 ];
