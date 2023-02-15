@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Response;
-use Iqbalatma\LaravelExtend\Exceptions\EmptyDataException;
-use Iqbalatma\LaravelTelegramBotChannelAsync\Log;
 
 class DashboardController extends Controller
 {
@@ -16,8 +14,6 @@ class DashboardController extends Controller
      */
     public function __invoke(): Response
     {
-        throw new EmptyDataException();
-        Log::critical("ini critical");
         return response()->view("dashboard.index", ["title" => "Dashboard"]);
     }
 }

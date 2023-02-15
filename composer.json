@@ -11,6 +11,7 @@
         "php": "^8.0.2",
         "guzzlehttp/guzzle": "^7.2",
         "iqbalatma/laravel-extend": "^1.0",
+        "iqbalatma/laravel-telegram-bot-channel-async": "^1.0",
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
@@ -31,8 +32,7 @@
         "psr-4": {
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
-            "Database\\Seeders\\": "database/seeders/",
-            "Iqbalatma\\LaravelTelegramBotChannelAsync\\": "packages/LaravelTelegramBotChannelAsync/src"
+            "Database\\Seeders\\": "database/seeders/"
         }
     },
     "autoload-dev": {

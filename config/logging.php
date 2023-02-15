@@ -1,13 +1,8 @@
 <?php
 
-use Iqbalatma\LaravelTelegramBotChannelAsync\TelegramBotHandler;
-use Iqbalatma\LaravelTelegramBotChannelAsync\TelegramFormatter;
-use Iqbalatma\LaravelTelegramBotChannelAsync\TelegramLogger;
-use Iqbalatma\LaravelTelegramBotChannelAsync\TelegramProcessor;
 use Monolog\Handler\NullHandler;
 use Monolog\Handler\StreamHandler;
 use Monolog\Handler\SyslogUdpHandler;
-use Monolog\Handler\TelegramBotHandler as HandlerTelegramBotHandler;
 
 return [
 
@@ -136,11 +131,8 @@ return [
         // ],
         "telegram" => [
             "driver" => "custom",
-            "via" => new TelegramLogger(env('TELEGRAM_APP_KEY'), env('TELEGRAM_CHANNEL'), true),
-            "with" => [
-                "apiKey" => env('TELEGRAM_APP_KEY'),
-                "channelId" => env('TELEGRAM_CHANNEL')
-            ]
+            "via" => new Iqbalatma\LaravelTelegramBotChannelAsync\TelegramLogger(env('TELEGRAM_APP_KEY'), env('TELEGRAM_CHANNEL'), true),
+            "level" => "debug"
         ]
     ],
 

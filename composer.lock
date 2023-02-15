@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3f244afbd810dd2bde6eaed620bebc2a",
+    "content-hash": "ce6cb166e2f1c2d63ef2bca3898a0401",
     "packages": [
         {
             "name": "brick/math",
@@ -978,6 +978,43 @@
                 "source": "https://github.com/iqbalatma/laravel-extend/tree/1.0.11"
             },
             "time": "2023-02-03T11:56:27+00:00"
+        },
+        {
+            "name": "iqbalatma/laravel-telegram-bot-channel-async",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/iqbalatma/laravel-telegram-bot-channel-async.git",
+                "reference": "56dbea50a1fbce0e581013d327c32c0158e2352d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/iqbalatma/laravel-telegram-bot-channel-async/zipball/56dbea50a1fbce0e581013d327c32c0158e2352d",
+                "reference": "56dbea50a1fbce0e581013d327c32c0158e2352d",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "^8.0 || ^9.19",
+                "php": "^8.0.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Iqbalatma\\LaravelTelegramBotChannelAsync\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "iqbalatma",
+                    "email": "iqbalatma@gmail.com"
+                }
+            ],
+            "support": {
+                "issues": "https://github.com/iqbalatma/laravel-telegram-bot-channel-async/issues",
+                "source": "https://github.com/iqbalatma/laravel-telegram-bot-channel-async/tree/v1.0.0"
+            },
+            "time": "2023-02-14T08:43:08+00:00"
         },
         {
             "name": "laravel/framework",
