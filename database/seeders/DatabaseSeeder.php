@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Log;
+use Iqbalatma\LaravelTelegramBotChannelAsync\Log;
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,8 +20,8 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             PermissionSeeder::class
         ]);
-        $this->call([
-            UserSeeder::class,
-        ]);
+        // $this->call([
+        //     UserSeeder::class,
+        // ]);
     }
 }
