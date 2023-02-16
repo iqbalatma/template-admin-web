@@ -11,7 +11,7 @@ class PermissionController extends Controller
 {
     public function __construct()
     {
-        $this->middleware("permission:" . PermissionStatic::PERMISSION_INDEX)->only("__invoke");
+        $this->middleware("permission:" . PermissionStatic::PERMISSIONS_INDEX)->only("__invoke");
     }
     /**
      * Use to show permission index view

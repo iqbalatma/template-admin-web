@@ -38,6 +38,12 @@
                         <span>Permissions</span>
                     </a>
                 </li>
+                <li class="sidebar-item">
+                    <a href="{{ route('roles.index') }}" class="sidebar-link">
+                        <i class="bi bi-person-fill-gear"></i>
+                        <span>Roles</span>
+                    </a>
+                </li>
                 <li class="sidebar-title">Menu</li>
                 <li class="sidebar-item">
                     <a href="{{ route('dashboard.index') }}" class="sidebar-link">
