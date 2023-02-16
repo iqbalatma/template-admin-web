@@ -55,6 +55,32 @@ class RoleService extends BaseService
         return $response;
     }
 
+    public function updateDataById(int $id, array $requestedData): array
+    {
+        try {
+            $this->checkData($id);
+
+            $role = $this->getData();
+            $role->syncPermissions($requestedData);
+
+            $response = [
+                "success" => true,
+            ];
+        } catch (EmptyDataException $e) {
+            $response = [
+                "success" => false,
+                "message" => $e->getMessage()
+            ];
+        } catch (Exception $e) {
+            $response = [
+                "success" => false,
+                "message" => "Something went wrong"
+            ];
+        }
+
+        return $response;
+    }
+
     private function setActivePermission(object|null &$permissions, object $role): void
     {
         $rolePermission =  array_flip($role->permissions->pluck("name")->toArray());

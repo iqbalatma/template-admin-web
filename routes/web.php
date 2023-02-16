@@ -32,6 +32,7 @@ Route::middleware("auth")->group(function () {
     ], function () {
         Route::get("/", "index")->name("index");
         Route::get("/{id}", "edit")->name("edit");
+        Route::put("/{id}", "update")->name("update");
     });
     Route::get("/permissions", PermissionController::class)->name("permissions.index");
     Route::get("/dashboard", DashboardController::class)->name("dashboard.index");
