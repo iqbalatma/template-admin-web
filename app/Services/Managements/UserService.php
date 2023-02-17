@@ -48,6 +48,25 @@ class UserService extends BaseService
         return $response;
     }
 
+    public function updateDataById(int $id, array $requestedData): array
+    {
+        try {
+            $this->checkData($id);
+            $user = $this->getData();
+
+            $user->syncRoles($requestedData);
+
+            $response = [
+                "success" => true,
+            ];
+        } catch (Exception $e) {
+            $response = [
+                "success" => false,
+                "message" => $e->getMessage()
+            ];
+        }
+        return $response;
+    }
     private function setActiveRole(object &$roles, object $user): void
     {
         $userRoles = array_flip($user->roles->pluck("name")->toArray());

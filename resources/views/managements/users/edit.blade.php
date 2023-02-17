@@ -25,6 +25,12 @@
                             </div>
                         </form>
                     </div>
+                    <div class="card-footer">
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <a href="{{ route('users.index') }}" class="btn btn-danger me-md-2">Cancel</a>
+                            <button form="roles.update" class="btn btn-success" type="submit">Update</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
