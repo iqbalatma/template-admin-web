@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Management\PermissionController;
 use App\Http\Controllers\Management\RoleController;
+use App\Http\Controllers\Management\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,6 +30,15 @@ Route::middleware("auth")->group(function () {
         "controller" => RoleController::class,
         "prefix" => "roles",
         "as" => "roles."
+    ], function () {
+        Route::get("/", "index")->name("index");
+        Route::get("/{id}", "edit")->name("edit");
+        Route::put("/{id}", "update")->name("update");
+    });
+    Route::group([
+        "controller" => UserController::class,
+        "prefix" => "users",
+        "as" => "users."
     ], function () {
         Route::get("/", "index")->name("index");
         Route::get("/{id}", "edit")->name("edit");

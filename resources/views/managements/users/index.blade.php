@@ -4,29 +4,28 @@
             <div class="card">
                 <div class="card-content">
                     <div class="card-body">
-                        <h5 class="card-title mb-4">All Data Permission</h5>
+                        <h5 class="card-title mb-4">All Data Roles</h5>
                         <table class="table table-striped">
                             <thead>
                                 <tr>
                                     <th scope="col">No</th>
-                                    <th scope="col">Permission Rule</th>
-                                    <th scope="col">Description</th>
+                                    <th scope="col">Role</th>
                                     <th scope="col">Last Updated</th>
+                                    <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($permissions as $key => $permission)
+                                @foreach ($users as $key => $user)
                                 <tr>
-                                    <th scope="row">{{ $permissions->firstItem()+$key }}</th>
-                                    <td>{{ $permission->name }}</td>
-                                    <td>{{ $permission->description }}</td>
-                                    <td>{{ $permission->updated_at }}</td>
+                                    <td>{{ $users->firstItem()+$key }}</td>
+                                    <td>{{ $user->name}}</td>
+                                    <td>{{ $user->email}}</td>
+                                    <td><a href="{{ route('users.edit', $user->id) }}" class="btn btn-success">Edit</a></td>
                                 </tr>
                                 @endforeach
                             </tbody>
                         </table>
-
-                        {{ $permissions->links() }}
+                        {{ $users->links() }}
                     </div>
                 </div>
             </div>

@@ -44,6 +44,12 @@
                         <span>Roles</span>
                     </a>
                 </li>
+                <li class="sidebar-item">
+                    <a href="{{ route('users.index') }}" class="sidebar-link">
+                        <i class="bi bi-people-fill"></i>
+                        <span>Users</span>
+                    </a>
+                </li>
                 <li class="sidebar-title">Menu</li>
                 <li class="sidebar-item">
                     <a href="{{ route('dashboard.index') }}" class="sidebar-link">

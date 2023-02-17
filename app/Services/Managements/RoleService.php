@@ -59,7 +59,6 @@ class RoleService extends BaseService
     {
         try {
             $this->checkData($id);
-
             $role = $this->getData();
             $role->syncPermissions($requestedData);
 

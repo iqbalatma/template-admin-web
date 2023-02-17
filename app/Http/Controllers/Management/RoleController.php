@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Management;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Managements\UpdateRoleRequest;
+use App\Http\Requests\Managements\Roles\UpdateRoleRequest;
 use App\Services\Managements\RoleService;
 use App\Statics\PermissionStatic;
 use Illuminate\Http\RedirectResponse;

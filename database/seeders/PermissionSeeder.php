@@ -27,5 +27,8 @@ class PermissionSeeder extends Seeder
         foreach (PermissionStatic::ROLES as $item) {
             Permission::create($item);
         }
+        foreach (PermissionStatic::USERS as $item) {
+            Permission::create($item);
+        }
     }
 }
