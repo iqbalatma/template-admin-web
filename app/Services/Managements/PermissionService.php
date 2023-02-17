@@ -14,10 +14,12 @@ class PermissionService extends BaseService
         $this->repository = new PermissionRepository();
     }
 
-    public function getAllData()
+    public function getAllData(): array
     {
         return [
-            "title" => "Permissions",
+            "title" => ucwords(trans("managements/permissions.title")),
+            "subTitle" => ucfirst(trans("managements/permissions.subtitle")),
+            "cardTitle" => ucwords(trans("managements/permissions.cardTitle")),
             "permissions" => $this->repository->getAllDataPaginated()
         ];
     }

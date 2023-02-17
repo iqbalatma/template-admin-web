@@ -9,9 +9,12 @@ abstract class TestCase extends BaseTestCase
 {
     use CreatesApplication;
 
-    public function login(): TestCase
+    public function login(?string $role = "superadmin"): TestCase
     {
         $user = User::factory()->create();
+        if ($role) {
+            $user->assignRole($role);
+        }
         $this->actingAs($user);
 
         return $this;
