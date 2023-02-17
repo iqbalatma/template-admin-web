@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Foundation\Application;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 use Iqbalatma\LaravelTelegramBotChannelAsync\SendLogTelegramBotJob;
 
@@ -25,5 +26,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Paginator::useBootstrapFive();
     }
 }
