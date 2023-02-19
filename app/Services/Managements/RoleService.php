@@ -22,7 +22,9 @@ class RoleService extends BaseService
     public function getAllData(): array
     {
         return [
-            "title" => "Roles",
+            "title" => ucwords(trans("managements/roles.title")),
+            "subTitle" => ucfirst(trans("managements/roles.subTitle")),
+            "cardTitle" => ucwords(trans("managements/roles.cardTitle")),
             "roles" => $this->repository->getAllData()
         ];
     }
