@@ -1,5 +1,8 @@
 <?php
 return [
     "lastUpdated" => "last updated",
-    "action" => "action"
+    "action" => "action",
+    "error" => [
+        "somethingWentWrong" => "something went wrong"
+    ]
 ];

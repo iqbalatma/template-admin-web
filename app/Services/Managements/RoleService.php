@@ -38,19 +38,20 @@ class RoleService extends BaseService
             $this->setActivePermission($permissions, $role);
             $response = [
                 "success" => true,
-                "title" => "Roles",
+                "title" => ucwords(trans("managements/roles.title")),
                 "role" => $role,
                 "permissions" => $permissions
             ];
         } catch (EmptyDataException $e) {
             $response = [
                 "success" => false,
-                "message" => $e->getMessage()
+                "message" => $e->getMessage(),
+                "tes" => $e
             ];
         } catch (Exception $e) {
             $response = [
                 "success" => false,
-                "message" => $e->getMessage()
+                "message" => trans("general.error.somethingWentWrong")
             ];
         }
 
