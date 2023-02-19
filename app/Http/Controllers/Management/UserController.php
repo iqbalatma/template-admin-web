@@ -30,6 +30,13 @@ class UserController extends Controller
         return response()->view("managements.users.index", $service->getAllData());
     }
 
+    /**
+     * Use to show form edit
+     *
+     * @param UserService $service
+     * @param integer $id
+     * @return Response|RedirectResponse
+     */
     public function edit(UserService $service, int $id): Response|RedirectResponse
     {
         $response = $service->getDataById($id);

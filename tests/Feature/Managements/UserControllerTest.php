@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Managements;
 
+use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -32,5 +33,32 @@ class UserControllerTest extends TestCase
         $this->login(null);
         $response = $this->get(route('users.index'));
         $response->assertStatus(JsonResponse::HTTP_FORBIDDEN);
+    }
+
+    public function testEdit()
+    {
+        $this->login();
+        $user = $this->getDummyUser();
+        $response = $this->get(route("users.edit", $user->id));
+        $response->assertStatus(JsonResponse::HTTP_OK);
+    }
+    public function testEditUnauthenticated()
+    {
+        $user = $this->getDummyUser();
+        $response = $this->get(route("users.edit", $user->id));
+        $response->assertStatus(JsonResponse::HTTP_FOUND)
+            ->assertRedirectToRoute("auth.login");
+    }
+    public function testEditUnauthorized()
+    {
+        $this->login(null);
+        $user = $this->getDummyUser();
+        $response = $this->get(route("users.edit", $user->id));
+        $response->assertStatus(JsonResponse::HTTP_FORBIDDEN);
+    }
+
+    private function getDummyUser(): User
+    {
+        return User::factory()->create();
     }
 }
