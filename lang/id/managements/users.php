@@ -6,5 +6,8 @@ return [
     "cardTitle" => "semua data pengguna",
     "table" => [
         "name" => "nama"
+    ],
+    "messages" => [
+        "updateSuccess" => "berhasil memperbaharui data pengguna !"
     ]
 ];

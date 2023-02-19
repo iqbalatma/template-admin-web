@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Managements;
 
+use App\Models\Permission;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -54,6 +55,38 @@ class UserControllerTest extends TestCase
         $this->login(null);
         $user = $this->getDummyUser();
         $response = $this->get(route("users.edit", $user->id));
+        $response->assertStatus(JsonResponse::HTTP_FORBIDDEN);
+    }
+
+    public function testUpdate()
+    {
+        $this->login();
+        $user = $this->getDummyUser();
+        $response = $this->put(route("users.update", $user->id), [
+            "permissions" => Permission::first()
+        ]);
+        $response->assertStatus(JsonResponse::HTTP_FOUND)
+            ->assertRedirectToRoute("users.index")
+            ->assertSessionHas("success", ucfirst(trans("managements/users.messages.updateSuccess")));
+    }
+    public function testUpdateUnauthenticated()
+    {
+        $user = $this->getDummyUser();
+        $response = $this->put(route("users.update", $user->id), [
+            "permissions" => Permission::first()
+        ]);
+
+        $response->assertStatus(JsonResponse::HTTP_FOUND)
+            ->assertRedirectToRoute("auth.login");
+    }
+    public function testUpdateUnauthorized()
+    {
+        $this->login(null);
+        $user = $this->getDummyUser();
+        $response = $this->put(route("users.update", $user->id), [
+            "permissions" => Permission::first()
+        ]);
+
         $response->assertStatus(JsonResponse::HTTP_FORBIDDEN);
     }
 

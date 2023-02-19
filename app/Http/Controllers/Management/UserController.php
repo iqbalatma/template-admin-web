@@ -45,12 +45,21 @@ class UserController extends Controller
         return response()->view("managements.users.edit", $response);
     }
 
+
+    /**
+     * use to update data user role
+     *
+     * @param UserService $service
+     * @param UpdateUserRequest $request
+     * @param integer $id
+     * @return RedirectResponse
+     */
     public function update(UserService $service, UpdateUserRequest $request, int $id): RedirectResponse
     {
         $response = $service->updateDataById($id, $request->validated());
 
         if ($this->isError($response)) return $this->getErrorResponse();
 
-        return redirect()->route("users.index")->with("success", "Update data user successfully");
+        return redirect()->route("users.index")->with("success", ucfirst(trans("managements/users.messages.updateSuccess")));
     }
 }

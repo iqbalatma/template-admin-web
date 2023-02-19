@@ -6,5 +6,8 @@ return [
     "cardTitle" => "all data users",
     "table" => [
         "name" => "name"
+    ],
+    "messages" => [
+        "updateSuccess" => "update data user successfully !"
     ]
 ];
