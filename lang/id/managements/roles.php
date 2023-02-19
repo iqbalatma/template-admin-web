@@ -5,5 +5,8 @@ return [
     "cardTitle" => "semua data peran",
     "table" => [
         "role" => "peran",
+    ],
+    "messages" => [
+        "updateSuccess" => "memperbaharui data peran berhasil !"
     ]
 ];

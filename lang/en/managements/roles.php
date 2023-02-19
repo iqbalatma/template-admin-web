@@ -5,5 +5,8 @@ return [
     "cardTitle" => "all data role",
     "table" => [
         "role" => "role",
+    ],
+    "messages" => [
+        "updateSuccess" => "update role permission successfully !"
     ]
 ];

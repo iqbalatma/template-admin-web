@@ -23,7 +23,8 @@ class RoleControllerTest extends TestCase
     public function testIndexUnauthenticated()
     {
         $response = $this->get(route("roles.index"));
-        $response->assertStatus(JsonResponse::HTTP_FOUND);
+        $response->assertStatus(JsonResponse::HTTP_FOUND)
+            ->assertRedirectToRoute("auth.login");
     }
 
     public function testIndexUnauthorized()
@@ -32,7 +33,6 @@ class RoleControllerTest extends TestCase
         $response = $this->get(route("roles.index"));
         $response->assertStatus(JsonResponse::HTTP_FORBIDDEN);
     }
-
 
     public function testEdit()
     {
@@ -45,7 +45,8 @@ class RoleControllerTest extends TestCase
     {
         $role = $this->getDummyRole();
         $response = $this->get(route("roles.edit", $role->id));
-        $response->assertStatus(JsonResponse::HTTP_FOUND);
+        $response->assertStatus(JsonResponse::HTTP_FOUND)
+            ->assertRedirectToRoute("auth.login");
     }
     public function testEditUnauthorized()
     {
@@ -54,6 +55,42 @@ class RoleControllerTest extends TestCase
         $response = $this->get(route("roles.edit", $role->id));
         $response->assertStatus(JsonResponse::HTTP_FORBIDDEN);
     }
+
+    public function testUpdate()
+    {
+        $this->login();
+        $role = $this->getDummyRole();
+        $response = $this->put(route("roles.update", $role->id), [
+            "permissions" => ["permissions.index"]
+        ]);
+
+        $response->assertStatus(JsonResponse::HTTP_FOUND)
+            ->assertRedirectToRoute("roles.index")
+            ->assertSessionHas("success", ucfirst(trans("managements/roles.messages.updateSuccess")));
+    }
+
+    public function testUpdateUnauthenticated()
+    {
+        $role = $this->getDummyRole();
+        $response = $this->put(route("roles.update", $role->id), [
+            "permissions" => ["permissions.index"]
+        ]);
+
+        $response->assertStatus(JsonResponse::HTTP_FOUND)
+            ->assertRedirectToRoute("auth.login");
+    }
+    public function testUpdateUnauthorized()
+    {
+        $this->login(null);
+        $role = $this->getDummyRole();
+        $response = $this->put(route("roles.update", $role->id), [
+            "permissions" => ["permissions.index"]
+        ]);
+
+        $response->assertStatus(JsonResponse::HTTP_FORBIDDEN);
+    }
+
+
     private function getDummyRole()
     {
         return Role::create([
