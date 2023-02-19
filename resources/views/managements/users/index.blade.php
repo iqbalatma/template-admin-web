@@ -1,17 +1,17 @@
-<x-dashboard.layout title="{{ $title }}" subTitle="Subtitle">
+<x-dashboard.layout title="{{ $title }}" subTitle="{{ $subTitle }}">
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-content">
                     <div class="card-body">
-                        <h5 class="card-title mb-4">All Data Roles</h5>
+                        <h5 class="card-title mb-4">{{ $cardTitle }}</h5>
                         <table class="table table-striped">
                             <thead>
                                 <tr>
                                     <th scope="col">No</th>
-                                    <th scope="col">Role</th>
-                                    <th scope="col">Last Updated</th>
-                                    <th scope="col">Action</th>
+                                    <th scope="col">{{ ucwords(trans('managements/users.table.name')) }}</th>
+                                    <th scope="col">{{ ucwords(trans('general.lastUpdated')) }}</th>
+                                    <th scope="col">{{ ucwords(trans('general.action')) }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -20,7 +20,7 @@
                                     <td>{{ $users->firstItem()+$key }}</td>
                                     <td>{{ $user->name}}</td>
                                     <td>{{ $user->email}}</td>
-                                    <td><a href="{{ route('users.edit', $user->id) }}" class="btn btn-success">Edit</a></td>
+                                    <td><a href="{{ route('users.edit', $user->id) }}" class="btn btn-success">{{ ucwords(trans('general.button.edit')) }}</a></td>
                                 </tr>
                                 @endforeach
                             </tbody>

@@ -18,6 +18,13 @@ class UserController extends Controller
         $this->middleware("permission:" . PermissionStatic::USERS_EDIT)->only("edit");
         $this->middleware("permission:" . PermissionStatic::USERS_UPDATE)->only("update");
     }
+
+    /**
+     * use to show view index
+     *
+     * @param UserService $service
+     * @return Response
+     */
     public function index(UserService $service): Response
     {
         return response()->view("managements.users.index", $service->getAllData());

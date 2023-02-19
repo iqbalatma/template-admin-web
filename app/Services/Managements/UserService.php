@@ -20,7 +20,9 @@ class UserService extends BaseService
     public function getAllData(): array
     {
         return [
-            "title" => "Users",
+            "title" => ucfirst(trans("managements/users.title")),
+            "subTitle" => ucfirst(trans("managements/users.subTitle")),
+            "cardTitle" => ucwords(trans("managements/users.cardTitle")),
             "users" => $this->repository->getAllDataPaginated()
         ];
     }

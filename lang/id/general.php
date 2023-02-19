@@ -4,5 +4,8 @@ return [
     "action" => "aksi",
     "error" => [
         "somethingWentWrong" => "terjadi kesalahan pada sistem"
+    ],
+    "button" => [
+        "edit" => "sunting"
     ]
 ];
