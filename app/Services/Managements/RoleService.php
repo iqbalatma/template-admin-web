@@ -5,7 +5,6 @@ namespace App\Services\Managements;
 use App\Repositories\PermissionRepository;
 use App\Repositories\RoleRepository;
 use Exception;
-use Illuminate\Support\Facades\Auth;
 use Iqbalatma\LaravelExtend\BaseService;
 use Iqbalatma\LaravelExtend\Exceptions\EmptyDataException;
 
@@ -19,6 +18,12 @@ class RoleService extends BaseService
         $this->repository = new RoleRepository();
         $this->permissionRepo = new PermissionRepository();
     }
+
+    /**
+     * Use to provide data for index view
+     *
+     * @return array
+     */
     public function getAllData(): array
     {
         return [
@@ -29,6 +34,13 @@ class RoleService extends BaseService
         ];
     }
 
+
+    /**
+     * use to provide data for edit data
+     *
+     * @param integer $id
+     * @return array
+     */
     public function getDataById(int $id): array
     {
         try {
@@ -58,6 +70,14 @@ class RoleService extends BaseService
         return $response;
     }
 
+
+    /**
+     * use to update data by id
+     *
+     * @param integer $id
+     * @param array $requestedData
+     * @return array
+     */
     public function updateDataById(int $id, array $requestedData): array
     {
         try {

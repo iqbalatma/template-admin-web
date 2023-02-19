@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Managements;
 
+use App\Models\Permission;
 use App\Models\Role;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -61,7 +62,7 @@ class RoleControllerTest extends TestCase
         $this->login();
         $role = $this->getDummyRole();
         $response = $this->put(route("roles.update", $role->id), [
-            "permissions" => ["permissions.index"]
+            "permissions" => Permission::first()
         ]);
 
         $response->assertStatus(JsonResponse::HTTP_FOUND)

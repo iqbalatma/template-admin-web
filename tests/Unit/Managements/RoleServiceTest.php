@@ -2,6 +2,7 @@
 
 namespace Tests\Unit\Managements;
 
+use App\Models\Permission;
 use App\Models\Role;
 use App\Services\Managements\RoleService;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -40,6 +41,29 @@ class RoleServiceTest extends TestCase
         $service = new RoleService();
         $role = $this->getDummyRole();
         $response = $service->getDataById($role->id + 1);
+
+        $this->assertFalse($response["success"]);
+        $this->assertEquals("Data doesn't exists !", $response["message"]);
+    }
+
+    public function testUpdateDataById()
+    {
+        $service = new RoleService();
+        $role = $this->getDummyRole();
+        $response = $service->updateDataById($role->id, [
+            "permissions" => Permission::first()
+        ]);
+
+        $this->assertTrue($response["success"]);
+    }
+
+    public function testUpdateDataByIdNotFound()
+    {
+        $service = new RoleService();
+        $role = $this->getDummyRole();
+        $response = $service->updateDataById($role->id + 1, [
+            "permissions" => Permission::first()
+        ]);
 
         $this->assertFalse($response["success"]);
         $this->assertEquals("Data doesn't exists !", $response["message"]);
