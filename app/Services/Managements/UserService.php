@@ -6,6 +6,7 @@ use App\Repositories\RoleRepository;
 use App\Repositories\UserRepository;
 use Exception;
 use Iqbalatma\LaravelExtend\BaseService;
+use Iqbalatma\LaravelExtend\Exceptions\EmptyDataException;
 
 class UserService extends BaseService
 {
@@ -36,14 +37,19 @@ class UserService extends BaseService
             $this->setActiveRole($roles, $user);
             $response = [
                 "success" => true,
-                "title" => "Users",
+                "title" => ucfirst(trans("managements/users.title")),
                 "user" => $user,
                 "roles" => $roles
+            ];
+        } catch (EmptyDataException $e) {
+            $response = [
+                "success" => false,
+                "message" => ucfirst($e->getMessage())
             ];
         } catch (Exception $e) {
             $response = [
                 "success" => false,
-                "message" => "Something went wrong"
+                "message" => ucfirst(trans("general.error.somethingWentWrong"))
             ];
         }
 
@@ -55,16 +61,20 @@ class UserService extends BaseService
         try {
             $this->checkData($id);
             $user = $this->getData();
-
             $user->syncRoles($requestedData);
 
             $response = [
                 "success" => true,
             ];
+        } catch (EmptyDataException $e) {
+            $response = [
+                "success" => false,
+                "message" => ucfirst($e->getMessage())
+            ];
         } catch (Exception $e) {
             $response = [
                 "success" => false,
-                "message" => $e->getMessage()
+                "message" => ucfirst(trans("general.error.somethingWentWrong"))
             ];
         }
         return $response;
