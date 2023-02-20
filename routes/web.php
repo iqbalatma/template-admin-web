@@ -25,25 +25,6 @@ Route::get('/', function () {
 });
 
 Route::middleware("auth")->group(function () {
-    Route::get("/permissions", PermissionController::class)->name("permissions.index");
-    Route::group([
-        "controller" => RoleController::class,
-        "prefix" => "roles",
-        "as" => "roles."
-    ], function () {
-        Route::get("/", "index")->name("index");
-        Route::get("/{id}", "edit")->name("edit");
-        Route::put("/{id}", "update")->name("update");
-    });
-    Route::group([
-        "controller" => UserController::class,
-        "prefix" => "users",
-        "as" => "users."
-    ], function () {
-        Route::get("/", "index")->name("index");
-        Route::get("/{id}", "edit")->name("edit");
-        Route::put("/{id}", "update")->name("update");
-    });
-    Route::get("/permissions", PermissionController::class)->name("permissions.index");
+    require __DIR__ . "/Managements/ManagementRoute.php";
     Route::get("/dashboard", DashboardController::class)->name("dashboard.index");
 });

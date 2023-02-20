@@ -23,7 +23,6 @@ Route::group([
     Route::post("/reset-password", 'resetPassword')->name('reset');
 });
 
-
 Route::group([
     "controller" => RegistrationController::class,
     "as" => "registration.",
