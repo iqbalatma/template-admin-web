@@ -21,5 +21,5 @@ Route::prefix("users")->name("users.")->controller(UserController::class)->group
 
 Route::prefix("profiles")->name("profiles.")->controller(\App\Http\Controllers\Management\ProfileController::class)->group(function (){
     Route::get("", "edit")->name("edit");
-    Route::post("", "update")->name("update");
+    Route::patch("", "update")->name("update");
 });

@@ -26,5 +26,6 @@ Route::get('/', function () {
 
 Route::middleware("auth")->group(function () {
     require __DIR__ . "/Managements/ManagementRoute.php";
+    Route::get("images/{path}", \App\Http\Controllers\ImageController::class)->name("images");
     Route::get("/dashboard", DashboardController::class)->name("dashboard.index");
 });
