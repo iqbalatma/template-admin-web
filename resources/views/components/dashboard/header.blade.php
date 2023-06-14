@@ -20,11 +20,14 @@
                                     {{ ucwords(isset(auth()->user()->getRoleNames()[0]) ? auth()->user()->getRoleNames()[0] : "-" )}}
                                 </p>
                             </div>
-                            <div class="user-img d-flex align-items-center">
-                                <div class="avatar avatar-md">
-                                    <img style="object-fit: contain" src="/storage/images/profiles/{{ auth()->user()->profile_image }}" />
+                            @if(\Illuminate\Support\Facades\Auth::check())
+                                <div class="user-img d-flex align-items-center">
+                                    <div class="avatar avatar-md">
+                                        <img
+                                            src="{{ \Illuminate\Support\Facades\URL::to("/images/" . str_replace("/", "_", \Illuminate\Support\Facades\Auth::user()->profile_image)) }}">
+                                    </div>
                                 </div>
-                            </div>
+                            @endif
                         </div>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton" style="min-width: 11rem">
