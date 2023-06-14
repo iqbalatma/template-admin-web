@@ -1,4 +1,4 @@
-<x-dashboard.layout title="{{ $title }}" subTitle="Subtitle">
+<x-dashboard.layout>
     <div class="row">
         <div class="col-12">
             <div class="card">

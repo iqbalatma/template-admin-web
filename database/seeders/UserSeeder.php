@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Enums\RoleEnum;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -22,8 +23,8 @@ class UserSeeder extends Seeder
             "email_verified_at" => now(),
             "password" => "admin"
         ]);
-        $superadmin->assignRole("superadmin");
-        User::factory()->count(100)->create();
+        $superadmin->assignRole(RoleEnum::SUPERADMIN->value);
+//        User::factory()->count(100)->create();
 
         $admin = User::create([
             "name" => "admin",
@@ -31,6 +32,6 @@ class UserSeeder extends Seeder
             "email_verified_at" => now(),
             "password" => "admin"
         ]);
-        $admin->assignRole("admin");
+        $admin->assignRole(RoleEnum::ADMIN->value);
     }
 }

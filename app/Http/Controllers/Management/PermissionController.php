@@ -13,6 +13,7 @@ class PermissionController extends Controller
     {
         $this->middleware("permission:" . PermissionStatic::PERMISSIONS_INDEX)->only("__invoke");
     }
+
     /**
      * Use to show permission index view
      *
@@ -21,6 +22,7 @@ class PermissionController extends Controller
      */
     public function __invoke(PermissionService $service): Response
     {
-        return response()->view("managements.permissions.index", $service->getAllData());
+        viewShare($service->getAllData());
+        return response()->view("managements.permissions.index");
     }
 }

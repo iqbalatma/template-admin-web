@@ -7,17 +7,14 @@ use Illuminate\View\Component;
 class Layout extends Component
 {
 
-    public string $title;
-    public string $subTitle;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct(string $title = "", string $subTitle = "")
+    public function __construct()
     {
-        $this->title = $title;
-        $this->subTitle = $subTitle;
+
     }
 
     /**

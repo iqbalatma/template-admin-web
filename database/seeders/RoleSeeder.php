@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Enums\RoleEnum;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Schema;
@@ -16,23 +17,12 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        $dataRole = [
-            [
-                'name' => 'superadmin',
-            ],
-            [
-                'name' => 'admin',
-            ],
-            [
-                'name' => 'regular_user',
-            ],
-        ];
         Schema::disableForeignKeyConstraints();
         Role::truncate();
         Schema::enableForeignKeyConstraints();
 
-        foreach ($dataRole as $key => $role) {
-            Role::create($role);
+        foreach (RoleEnum::cases() as $key => $role) {
+            Role::create(["name" => $role->value]);
         }
     }
 }

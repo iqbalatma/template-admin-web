@@ -26,7 +26,8 @@ class RoleController extends Controller
      */
     public function index(RoleService $service): Response
     {
-        return response()->view("managements.roles.index", $service->getAllData());
+        viewShare($service->getAllData());
+        return response()->view("managements.roles.index");
     }
 
 
@@ -41,8 +42,9 @@ class RoleController extends Controller
     {
         $response = $service->getDataById($id);
         if ($this->isError($response)) return $this->getErrorResponse();
+        viewShare($response);
 
-        return response()->view("managements.roles.edit", $response);
+        return response()->view("managements.roles.edit");
     }
 
 

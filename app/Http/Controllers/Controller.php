@@ -16,15 +16,20 @@ class Controller extends BaseController
     /**
      * Use to check is response from service error or not
      *
-     * @param array $response
      * @return bool
      */
-    protected function isError(array $response): bool
+    protected function isError(array $response, string $redirectRoute = null, array $params = []): bool
     {
         if (!$response["success"]) {
-            $this->setErrorResponse(
-                redirect()->back()->withErrors(["errors" => $response["message"]])->withInput()
-            );
+            if ($redirectRoute) {
+                $this->setErrorResponse(
+                    redirect()->route($redirectRoute, $params)->withErrors(["errors" => $response["message"]])->withInput()
+                );
+            } else {
+                $this->setErrorResponse(
+                    redirect()->back()->withErrors(["errors" => $response["message"]])->withInput()
+                );
+            }
             return true;
         }
 

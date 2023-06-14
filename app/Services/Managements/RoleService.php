@@ -51,6 +51,7 @@ class RoleService extends BaseService
             $response = [
                 "success" => true,
                 "title" => ucwords(trans("managements/roles.title")),
+                "subTitle" => "Roles",
                 "role" => $role,
                 "permissions" => $permissions
             ];
