@@ -53,7 +53,7 @@ return [
     'channels' => [
         'stack' => [
             'driver' => 'stack',
-            'channels' => ['single', 'telegram'],
+            'channels' => ['single'],
             'ignore_exceptions' => false,
         ],
 
@@ -129,11 +129,11 @@ return [
         //     ],
         //     'formatter' => TelegramFormatter::class,
         // ],
-        "telegram" => [
-            "driver" => "custom",
-            "via" => new Iqbalatma\LaravelTelegramBotChannelAsync\TelegramLogger(env('TELEGRAM_APP_KEY'), env('TELEGRAM_CHANNEL'), true),
-            "level" => "debug"
-        ]
+//        "telegram" => [
+//            "driver" => "custom",
+//            "via" => new Iqbalatma\LaravelTelegramBotChannelAsync\TelegramLogger(env('TELEGRAM_APP_KEY'), env('TELEGRAM_CHANNEL'), true),
+//            "level" => "debug"
+//        ]
     ],
 
 ];
