@@ -17,7 +17,7 @@
                                     {{ auth()->user()->name }}
                                 </h6>
                                 <p class="mb-0 text-sm text-gray-600">
-                                    Role Place Holder
+                                    {{ ucwords(isset(auth()->user()->getRoleNames()[0]) ? auth()->user()->getRoleNames()[0] : "-" )}}
                                 </p>
                             </div>
                             <div class="user-img d-flex align-items-center">

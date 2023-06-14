@@ -14,6 +14,8 @@ Route::group([
     Route::get("/{id}", "edit")->name("edit");
     Route::put("/{id}", "update")->name("update");
 });
+
+
 Route::group([
     "controller" => UserController::class,
     "prefix" => "users",

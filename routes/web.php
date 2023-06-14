@@ -6,7 +6,6 @@ use App\Http\Controllers\Management\PermissionController;
 use App\Http\Controllers\Management\RoleController;
 use App\Http\Controllers\Management\UserController;
 use Illuminate\Support\Facades\Route;
-use Iqbalatma\LaravelTelegramBotChannelAsync\Log;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +21,6 @@ use Iqbalatma\LaravelTelegramBotChannelAsync\Log;
 require __DIR__ . "/Auth/AuthRoute.php";
 
 Route::get('/', function () {
-    Log::emergency("tes");
     return view('welcome');
 });
 
