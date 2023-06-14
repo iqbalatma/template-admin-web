@@ -5,8 +5,8 @@ namespace App\Services\Managements;
 use App\Repositories\PermissionRepository;
 use App\Repositories\RoleRepository;
 use Exception;
-use Iqbalatma\LaravelExtend\BaseService;
-use Iqbalatma\LaravelExtend\Exceptions\EmptyDataException;
+use Iqbalatma\LaravelServiceRepo\BaseService;
+use Iqbalatma\LaravelServiceRepo\Exceptions\EmptyDataException;
 
 class RoleService extends BaseService
 {
@@ -45,7 +45,7 @@ class RoleService extends BaseService
     {
         try {
             $this->checkData($id);
-            $role = $this->getData();
+            $role = $this->getServiceEntity();
             $permissions = $this->permissionRepo->getAllData();
             $this->setActivePermission($permissions, $role);
             $response = [
@@ -82,7 +82,7 @@ class RoleService extends BaseService
     {
         try {
             $this->checkData($id);
-            $role = $this->getData();
+            $role = $this->getServiceEntity();
             $role->syncPermissions($requestedData);
 
             $response = [

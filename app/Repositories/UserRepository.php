@@ -5,7 +5,7 @@ namespace App\Repositories;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Support\Facades\Hash;
-use Iqbalatma\LaravelExtend\BaseRepository;
+use Iqbalatma\LaravelServiceRepo\BaseRepository;
 
 class UserRepository extends BaseRepository
 {
@@ -14,10 +14,5 @@ class UserRepository extends BaseRepository
     public function __construct()
     {
         $this->model = new User();
-    }
-
-    public function password()
-    {
-        return Attribute::make(set: fn ($value) => Hash::make($value));
     }
 }

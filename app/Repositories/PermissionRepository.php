@@ -3,7 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Permission;
-use Iqbalatma\LaravelExtend\BaseRepository;
+use Iqbalatma\LaravelServiceRepo\BaseRepository;
 
 class PermissionRepository extends BaseRepository
 {

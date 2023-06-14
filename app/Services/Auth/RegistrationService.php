@@ -4,8 +4,9 @@ namespace App\Services\Auth;
 
 use App\Repositories\UserRepository;
 use Exception;
+use Iqbalatma\LaravelServiceRepo\BaseService;
 
-class RegistrationService
+class RegistrationService extends BaseService
 {
     protected $repository;
 
