@@ -9,6 +9,7 @@ use Spatie\Permission\Models\Role as SpatieModelRole;
 
 class Role extends SpatieModelRole
 {
+    protected $table = "roles";
     public function formattedName(): Attribute
     {
         return Attribute::make(

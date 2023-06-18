@@ -8,4 +8,5 @@ use Spatie\Permission\Models\Permission as SpatieModelPermission;
 
 class Permission extends SpatieModelPermission
 {
+    protected $table = "permissions";
 }
