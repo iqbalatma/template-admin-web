@@ -12,7 +12,7 @@
     <link rel="shortcut icon" href="{{ asset('mazer/assets/images/logo/favicon.png') }}" type="image/png" />
     <link rel="stylesheet" href="{{ asset('mazer/assets/css/shared/iconly.css') }}">
 
-    @yield("custom-heads")
+    @stack("scripts")
 </head>
 
 <body>
@@ -60,7 +60,8 @@
 
     <script src="{{ asset('mazer/assets/js/bootstrap.js') }}"></script>
     <script src="{{ asset('mazer/assets/js/app.js') }}"></script>
-    @yield("custom-scripts")
+    @vite(['resources/js/app.js'])
+    @stack("scripts")
 </body>
 
 </html>
