@@ -31,11 +31,11 @@ Route::group([], __DIR__."/Auth/ForgotPasswordRoute.php");
 Route::group([], __DIR__."/Auth/RegistrationRoute.php");
 
 Route::middleware("auth")->group(function () {
-    Route::prefix("managements")->group(function (){
+    Route::prefix("management")->group(function (){
         Route::get("/permissions", PermissionController::class)->name("permissions.index")->middleware("permission:".\App\Statics\PermissionStatic::PERMISSIONS_INDEX);
-        Route::group([], __DIR__."/Managements/RoleRoute.php");
-        Route::group([], __DIR__."/Managements/UserRoute.php");
-        Route::group([], __DIR__."/Managements/ProfileRoute.php");
+        Route::group([], __DIR__ . "/Management/RoleRoute.php");
+        Route::group([], __DIR__ . "/Management/UserRoute.php");
+        Route::group([], __DIR__ . "/Management/ProfileRoute.php");
     });
 
     Route::get("images/{path}", \App\Http\Controllers\ImageController::class)->name("images");
