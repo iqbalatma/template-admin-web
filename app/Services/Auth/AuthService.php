@@ -2,8 +2,7 @@
 
 namespace App\Services\Auth;
 
-use App\Interfaces\Auth\AuthServiceInterface;
-use App\Models\User;
+use App\Contracts\Interfaces\Auth\AuthServiceInterface;
 use Illuminate\Support\Facades\Auth;
 use Iqbalatma\LaravelServiceRepo\BaseService;
 
