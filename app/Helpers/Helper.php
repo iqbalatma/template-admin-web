@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Support\Facades\View;
 /**
  * Use to share data to blade
  *
