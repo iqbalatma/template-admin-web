@@ -7,17 +7,20 @@
                     {{ $cardTitle }}
                 </div>
                 <div class="card-body">
-                    <form class="row g-3" method="POST" action="{{ route('profiles.update') }}" enctype="multipart/form-data">
+                    <form class="row g-3" method="POST" action="{{ route('profiles.update') }}"
+                          enctype="multipart/form-data">
                         @csrf
                         @method("PATCH")
                         <div class="col-md-12">
                             <label for="name" class="form-label">Nama</label>
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Masukkan nama anda"
+                            <input type="text" class="form-control" id="name" name="name"
+                                   placeholder="Masukkan nama anda"
                                    required value="{{$user->name}}">
                         </div>
                         <div class="col-md-12">
                             <label for="phone" class="form-label">Nomo HP</label>
-                            <input type="text" class="form-control" id="phone" name="phone" placeholder="Masukkan nomor hp anda"
+                            <input type="text" class="form-control" id="phone" name="phone"
+                                   placeholder="Masukkan nomor hp anda"
                                    required value="{{$user->phone}}">
                         </div>
                         <div class="col-md-12">
@@ -29,9 +32,16 @@
                             <label for="profile_image" class="form-label">Profile</label>
                             <div class="row">
                                 <div class="col-md-1">
-                                    <img
-                                        src="{{ \Illuminate\Support\Facades\URL::to("/images/" . str_replace("/", "_", $user->profile_image)) }}"
-                                        class="img-thumbnail" alt="avatar" width="100px">
+                                    @if($user->profile_image)
+                                        <img
+                                            src="{{ \Illuminate\Support\Facades\URL::to("/images/" . str_replace("/", "_", $user->profile_image)) }}"
+                                            class="img-thumbnail" alt="avatar" width="100px">
+                                    @else
+                                        <img
+                                            src="/default/profile.jpg"
+                                            class="img-thumbnail" alt="avatar" width="100px">
+                                    @endif
+
                                 </div>
                                 <div class="col-md-10">
                                     <input class="form-control" type="file" id="profile_image" name="profile_image"

@@ -18,8 +18,11 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             PermissionSeeder::class
         ]);
-        $this->call([
-            UserSeeder::class,
-        ]);
+
+        if (config("app.env") !== "production") {
+            $this->call([
+                UserSeeder::class,
+            ]);
+        }
     }
 }

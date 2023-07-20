@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Enums\RoleEnum;
 use Illuminate\Http\Response;
 
 class DashboardController extends Controller

@@ -23,8 +23,15 @@
                             @if(\Illuminate\Support\Facades\Auth::check())
                                 <div class="user-img d-flex align-items-center">
                                     <div class="avatar avatar-md">
-                                        <img
-                                            src="{{ \Illuminate\Support\Facades\URL::to("/images/" . str_replace("/", "_", \Illuminate\Support\Facades\Auth::user()->profile_image)) }}">
+                                        @if(auth()->user()->profile_image)
+                                            <img
+                                                src="{{ \Illuminate\Support\Facades\URL::to("/images/" . str_replace("/", "_", auth()->user()->profile_image)) }}"
+                                                class="img-thumbnail" alt="avatar" width="100px">
+                                        @else
+                                            <img
+                                                src="/default/profile.jpg"
+                                                class="img-thumbnail" alt="avatar" width="100px">
+                                        @endif
                                     </div>
                                 </div>
                             @endif
