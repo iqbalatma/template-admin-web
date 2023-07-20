@@ -5,19 +5,11 @@ namespace App\Http\Controllers\Management;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Managements\Roles\UpdateRoleRequest;
 use App\Services\Managements\RoleService;
-use App\Statics\PermissionStatic;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 
 class RoleController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware("permission:" . PermissionStatic::ROLES_INDEX)->only("index");
-        $this->middleware("permission:" . PermissionStatic::ROLES_EDIT)->only("edit");
-        $this->middleware("permission:" . PermissionStatic::ROLES_UPDATE)->only("update");
-    }
-
     /**
      * use to show role data index
      *

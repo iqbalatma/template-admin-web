@@ -5,20 +5,11 @@ namespace App\Http\Controllers\Management;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Managements\Users\UpdateUserRequest;
 use App\Services\Managements\UserService;
-use App\Statics\PermissionStatic;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class UserController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware("permission:" . PermissionStatic::USERS_INDEX)->only("index");
-        $this->middleware("permission:" . PermissionStatic::USERS_EDIT)->only("edit");
-        $this->middleware("permission:" . PermissionStatic::USERS_UPDATE)->only("update");
-    }
-
     /**
      * use to show view index
      *

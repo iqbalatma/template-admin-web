@@ -2,8 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Statics\PermissionStatic;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Enums\PermissionEnum;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Schema;
 use Spatie\Permission\Models\Permission;
@@ -21,14 +20,11 @@ class PermissionSeeder extends Seeder
         Permission::truncate();
         Schema::enableForeignKeyConstraints();
 
-        foreach (PermissionStatic::PERMISSIONS as $item) {
-            Permission::create($item);
-        }
-        foreach (PermissionStatic::ROLES as $item) {
-            Permission::create($item);
-        }
-        foreach (PermissionStatic::USERS as $item) {
-            Permission::create($item);
+        foreach (PermissionEnum::cases() as $key => $permission){
+            Permission::create([
+                "name" => $permission->value,
+                "description" => $permission->description(),
+            ]);
         }
     }
 }

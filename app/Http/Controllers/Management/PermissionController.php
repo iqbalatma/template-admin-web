@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Management;
 
 use App\Http\Controllers\Controller;
 use App\Services\Managements\PermissionService;
-use App\Statics\PermissionStatic;
 use Illuminate\Http\Response;
 
 class PermissionController extends Controller
