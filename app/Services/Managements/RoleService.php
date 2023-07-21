@@ -73,12 +73,10 @@ class RoleService extends BaseService
             $response = [
                 "success" => false,
                 "message" => $e->getMessage(),
-                "tes" => $e
             ];
         } catch (Exception $e) {
             $response = getDefaultErrorResponse($e);
         }
-
         return $response;
     }
 
