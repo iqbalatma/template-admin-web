@@ -14,11 +14,20 @@
                             @csrf
                             @method("PUT")
                             <div class="permission mt-4">
-                                @foreach ($permissions as $permission)
-                                <div class="form-check form-switch form-check-inline">
-                                    <input name="permissions[]" class="form-check-input" type="checkbox" value="{{ $permission->name }}" @if($permission->is_active) checked @endif id="permission{{ $permission->id }}">
-                                    <label class="form-check-label" for="permission{{ $permission->id }}">{{ $permission->description }}</label>
-                                </div>
+                                @foreach ($permissions as $key => $permissionGroup)
+                                    <h5>{{ucwords($key)}}</h5>
+                                    <hr>
+                                    @foreach($permissionGroup as $subKey => $permission)
+                                        <div class="form-check form-switch form-check-inline">
+                                            <input name="permissions[]" class="form-check-input" type="checkbox"
+                                                   value="{{ $permission->name }}" @if($permission->is_active) checked
+                                                   @endif id="permission{{ $permission->id }}">
+                                            <label class="form-check-label"
+                                                   for="permission{{ $permission->id }}">{{ $permission->description }}</label>
+                                        </div>
+                                    @endforeach
+                                    <br>
+                                    <br>
                                 @endforeach
                             </div>
                         </form>

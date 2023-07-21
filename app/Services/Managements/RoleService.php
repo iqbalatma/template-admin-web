@@ -48,10 +48,11 @@ class RoleService extends BaseService
             $role = $this->getServiceEntity();
             $permissions = $this->permissionRepo->getAllData();
             $this->setActivePermission($permissions, $role);
+            $permissions = $permissions->groupBy("feature");
             $response = [
                 "success" => true,
                 "title" => ucwords(trans("managements/roles.title")),
-                "subTitle" => "Roles",
+                "subTitle" => ucwords(trans("managements/roles.title")),
                 "role" => $role,
                 "permissions" => $permissions
             ];

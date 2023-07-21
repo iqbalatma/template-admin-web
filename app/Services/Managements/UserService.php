@@ -18,6 +18,10 @@ class UserService extends BaseService
         $this->repository = new UserRepository();
         $this->roleRepo = new RoleRepository();
     }
+
+    /**
+     * @return array
+     */
     public function getAllData(): array
     {
         return [
@@ -28,6 +32,11 @@ class UserService extends BaseService
         ];
     }
 
+
+    /**
+     * @param int $id
+     * @return array
+     */
     public function getDataById(int $id): array
     {
         try {
@@ -37,6 +46,7 @@ class UserService extends BaseService
             $this->setActiveRole($roles, $user);
             $response = [
                 "success" => true,
+                "subTitle" => ucfirst(trans("managements/users.subTitle")),
                 "title" => ucfirst(trans("managements/users.title")),
                 "user" => $user,
                 "roles" => $roles
@@ -47,15 +57,18 @@ class UserService extends BaseService
                 "message" => ucfirst($e->getMessage())
             ];
         } catch (Exception $e) {
-            $response = [
-                "success" => false,
-                "message" => ucfirst(trans("general.error.somethingWentWrong"))
-            ];
+            $response = getDefaultErrorResponse($e);
         }
 
         return $response;
     }
 
+
+    /**
+     * @param int $id
+     * @param array $requestedData
+     * @return array|true[]
+     */
     public function updateDataById(int $id, array $requestedData): array
     {
         try {
@@ -72,13 +85,17 @@ class UserService extends BaseService
                 "message" => ucfirst($e->getMessage())
             ];
         } catch (Exception $e) {
-            $response = [
-                "success" => false,
-                "message" => ucfirst(trans("general.error.somethingWentWrong"))
-            ];
+            $response = getDefaultErrorResponse($e);
         }
         return $response;
     }
+
+
+    /**
+     * @param object $roles
+     * @param object $user
+     * @return void
+     */
     private function setActiveRole(object &$roles, object $user): void
     {
         $userRoles = array_flip($user->roles->pluck("name")->toArray());

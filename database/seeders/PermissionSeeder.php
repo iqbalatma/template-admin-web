@@ -24,6 +24,7 @@ class PermissionSeeder extends Seeder
             Permission::create([
                 "name" => $permission->value,
                 "description" => $permission->description(),
+                "feature" => $permission->featureGroup(),
             ]);
         }
     }
