@@ -1,18 +1,27 @@
 <?php
 
 namespace App\Repositories;
-
-use App\Models\User;
-use Illuminate\Database\Eloquent\Casts\Attribute;
-use Illuminate\Support\Facades\Hash;
 use Iqbalatma\LaravelServiceRepo\BaseRepository;
+use Illuminate\Database\Eloquent\Builder;
+use App\Models\User;
 
 class UserRepository extends BaseRepository
 {
-    protected $model;
 
-    public function __construct()
+     /**
+     * use to set base query builder
+     * @return Builder
+     */
+    public function getBaseQuery(): Builder
     {
-        $this->model = new User();
+        return User::query();
+    }
+
+    /**
+     * use this to add custom query on filterColumn method
+     * @return void
+     */
+    public function applyAdditionalFilterParams(): void
+    {
     }
 }

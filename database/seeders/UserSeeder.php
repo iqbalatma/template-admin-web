@@ -24,7 +24,6 @@ class UserSeeder extends Seeder
             "password" => "admin"
         ]);
         $superadmin->assignRole(RoleEnum::SUPERADMIN->value);
-//        User::factory()->count(100)->create();
 
         $admin = User::create([
             "name" => "admin",
@@ -33,5 +32,7 @@ class UserSeeder extends Seeder
             "password" => "admin"
         ]);
         $admin->assignRole(RoleEnum::ADMIN->value);
+
+        User::factory()->count(100)->create();
     }
 }
