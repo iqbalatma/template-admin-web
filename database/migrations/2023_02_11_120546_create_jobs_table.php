@@ -1,6 +1,6 @@
 <?php
 
-use App\Enums\TableEnum;
+use App\Enums\Table;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,7 +14,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create(TableEnum::JOBS(), function (Blueprint $table) {
+        Schema::create(Table::JOBS(), function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('queue')->index();
             $table->longText('payload');
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists(TableEnum::JOBS());
+        Schema::dropIfExists(Table::JOBS());
     }
 };

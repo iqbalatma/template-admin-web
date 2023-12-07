@@ -20,6 +20,11 @@ class AuthController extends Controller
         return response()->view('auth.login', $service->getDataLogin());
     }
 
+    /**
+     * @param AuthService $service
+     * @param AuthenticateRequest $request
+     * @return RedirectResponse
+     */
     public function authenticate(AuthService $service, AuthenticateRequest $request): RedirectResponse
     {
         $response = $service->authenticate($request->validated());
@@ -31,7 +36,12 @@ class AuthController extends Controller
         return redirect()->intended('dashboard');
     }
 
-    public function logout(AuthService $service, Request $request)
+    /**
+     * @param AuthService $service
+     * @param Request $request
+     * @return RedirectResponse
+     */
+    public function logout(AuthService $service, Request $request):RedirectResponse
     {
         $service->logout();
         $request->session()->invalidate();

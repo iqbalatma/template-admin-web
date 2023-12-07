@@ -1,6 +1,6 @@
 <?php
 
-use App\Enums\TableEnum;
+use App\Enums\Table;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,7 +14,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create(TableEnum::PERSONAL_ACCESS_TOKEN(), function (Blueprint $table) {
+        Schema::create(Table::PERSONAL_ACCESS_TOKEN(), function (Blueprint $table) {
             $table->id();
             $table->morphs('tokenable');
             $table->string('name');
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists(TableEnum::PERSONAL_ACCESS_TOKEN());
+        Schema::dropIfExists(Table::PERSONAL_ACCESS_TOKEN());
     }
 };

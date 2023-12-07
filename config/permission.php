@@ -1,6 +1,6 @@
 <?php
 
-use App\Enums\TableEnum;
+use App\Enums\Table;
 
 return [
 
@@ -15,7 +15,7 @@ return [
          * `Spatie\Permission\Contracts\Permission` contract.
          */
 
-        'permission' => Spatie\Permission\Models\Permission::class,
+        'permission' => \App\Models\Permission::class,
 
         /*
          * When using the "HasRoles" trait from this package, we need to know which
@@ -26,7 +26,7 @@ return [
          * `Spatie\Permission\Contracts\Role` contract.
          */
 
-        'role' => Spatie\Permission\Models\Role::class,
+        'role' => \App\Models\Role::class,
 
     ],
 
@@ -38,7 +38,7 @@ return [
          * default value but you may easily change it to any table you like.
          */
 
-        'roles' => TableEnum::ROLES(),
+        'roles' => Table::ROLES->value,
 
         /*
          * When using the "HasPermissions" trait from this package, we need to know which
@@ -46,7 +46,7 @@ return [
          * default value but you may easily change it to any table you like.
          */
 
-        'permissions' => TableEnum::PERMISSIONS(),
+        'permissions' => Table::PERMISSIONS->value,
 
         /*
          * When using the "HasPermissions" trait from this package, we need to know which
@@ -54,7 +54,7 @@ return [
          * basic default value but you may easily change it to any table you like.
          */
 
-        'model_has_permissions' => TableEnum::MODEL_HAS_PERMISSIONS(),
+        'model_has_permissions' => Table::MODEL_HAS_PERMISSIONS->value,
 
         /*
          * When using the "HasRoles" trait from this package, we need to know which
@@ -62,7 +62,7 @@ return [
          * basic default value but you may easily change it to any table you like.
          */
 
-        'model_has_roles' => TableEnum::MODEL_HAS_ROLES(),
+        'model_has_roles' => Table::MODEL_HAS_ROLES->value,
 
         /*
          * When using the "HasRoles" trait from this package, we need to know which
@@ -70,7 +70,7 @@ return [
          * basic default value but you may easily change it to any table you like.
          */
 
-        'role_has_permissions' => TableEnum::ROLE_HAS_PERMISSIONS(),
+        'role_has_permissions' => Table::ROLE_HAS_PERMISSIONS->value,
     ],
 
     'column_names' => [

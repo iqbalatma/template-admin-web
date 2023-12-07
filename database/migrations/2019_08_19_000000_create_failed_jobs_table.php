@@ -1,6 +1,6 @@
 <?php
 
-use App\Enums\TableEnum;
+use App\Enums\Table;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,7 +14,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create(TableEnum::FAILED_JOBS(), function (Blueprint $table) {
+        Schema::create(Table::FAILED_JOBS(), function (Blueprint $table) {
             $table->id();
             $table->string('uuid')->unique();
             $table->text('connection');
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists(TableEnum::FAILED_JOBS());
+        Schema::dropIfExists(Table::FAILED_JOBS());
     }
 };

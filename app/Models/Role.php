@@ -2,14 +2,13 @@
 
 namespace App\Models;
 
+use App\Enums\Table;
 use Illuminate\Database\Eloquent\Casts\Attribute;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Spatie\Permission\Models\Role as SpatieModelRole;
 
 class Role extends SpatieModelRole
 {
-    protected $table = "roles";
+    protected $table = Table::ROLES->value;
     public function formattedName(): Attribute
     {
         return Attribute::make(

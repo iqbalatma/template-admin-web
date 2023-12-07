@@ -4,7 +4,7 @@ namespace App\Enums;
 
 use ArchTech\Enums\InvokableCases;
 
-enum TableEnum:string
+enum Table:string
 {
     use InvokableCases;
 

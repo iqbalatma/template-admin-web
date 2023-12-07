@@ -1,6 +1,6 @@
 <?php
 
-use App\Enums\TableEnum;
+use App\Enums\Table;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,7 +14,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create(TableEnum::PASSWORD_RESETS(), function (Blueprint $table) {
+        Schema::create(Table::PASSWORD_RESETS(), function (Blueprint $table) {
             $table->string('email')->primary();
             $table->string('token');
             $table->timestamp('created_at')->nullable();
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists(TableEnum::PASSWORD_RESETS());
+        Schema::dropIfExists(Table::PASSWORD_RESETS());
     }
 };
