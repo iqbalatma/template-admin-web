@@ -32,7 +32,7 @@ class RoleController extends Controller
      */
     public function edit(RoleService $service, int $id): Response|RedirectResponse
     {
-        $response = $service->getDataById($id);
+        $response = $service->getEditDataById($id);
         if ($this->isError($response)) return $this->getErrorResponse();
         viewShare($response);
 

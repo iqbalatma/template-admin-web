@@ -20,8 +20,6 @@ enum PermissionEnum: string
 
     #[Description("can show all data roles")] #[FeatureGroup("roles")]
     case ROLES_INDEX = "roles.index";
-    #[Description("can show form edit data roles")] #[FeatureGroup("roles")]
-    case ROLES_EDIT = "roles.edit";
 
     #[Description("can update data roles")] #[FeatureGroup("roles")]
     case ROLES_UPDATE = "roles.update";

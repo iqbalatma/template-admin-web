@@ -2,8 +2,8 @@
 
 namespace App\Services\Managements;
 
+use App\Contracts\Abstracts\Services\BaseService;
 use App\Repositories\PermissionRepository;
-use Iqbalatma\LaravelServiceRepo\BaseService;
 
 class PermissionService extends BaseService
 {
@@ -14,6 +14,9 @@ class PermissionService extends BaseService
         $this->repository = new PermissionRepository();
     }
 
+    /**
+     * @return array
+     */
     public function getAllData(): array
     {
         return [
@@ -22,5 +25,20 @@ class PermissionService extends BaseService
             "cardTitle" => ucwords(trans("managements/permissions.cardTitle")),
             "permissions" => $this->repository->getAllDataPaginated()
         ];
+    }
+
+
+    /**
+     * @param object|null $permissions
+     * @param object $role
+     * @return void
+     */
+    public static function setActivePermission(object|null &$permissions, object $role): void
+    {
+        $rolePermission =  array_flip($role->permissions->pluck("name")->toArray());
+        $permissions = collect($permissions)->map(function ($item) use ($rolePermission) {
+            $item["is_active"] = isset($rolePermission[$item["name"]]);
+            return $item;
+        });
     }
 }

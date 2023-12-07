@@ -2,21 +2,25 @@
 
 namespace App\Services\Managements;
 
+use App\Contracts\Abstracts\Services\BaseService;
+use App\Models\Role;
 use App\Repositories\PermissionRepository;
 use App\Repositories\RoleRepository;
 use Exception;
-use Iqbalatma\LaravelServiceRepo\BaseService;
 use Iqbalatma\LaravelServiceRepo\Exceptions\EmptyDataException;
 
 class RoleService extends BaseService
 {
-    protected $repository;
-    protected $permissionRepo;
+    protected PermissionRepository $permissionRepo;
 
     public function __construct()
     {
         $this->repository = new RoleRepository();
         $this->permissionRepo = new PermissionRepository();
+        $this->breadcrumbs = [
+            "Management" => "#",
+            "Roles" => route('roles.index'),
+        ];
     }
 
     /**
@@ -30,6 +34,7 @@ class RoleService extends BaseService
             "title" => ucwords(trans("managements/roles.title")),
             "subTitle" => ucfirst(trans("managements/roles.subTitle")),
             "cardTitle" => ucwords(trans("managements/roles.cardTitle")),
+            "breadcrumbs" => $this->getBreadcrumbs(),
             "roles" => $this->repository->getAllData()
         ];
     }
@@ -41,20 +46,27 @@ class RoleService extends BaseService
      * @param integer $id
      * @return array
      */
-    public function getDataById(int $id): array
+    public function getEditDataById(int $id): array
     {
         try {
             $this->checkData($id);
             $role = $this->getServiceEntity();
+
+            $this->addBreadCrumbs([
+                "Edit" => ""
+            ]);
+
             $permissions = $this->permissionRepo->getAllData();
-            $this->setActivePermission($permissions, $role);
+            PermissionService::setActivePermission($permissions, $role);
             $permissions = $permissions->groupBy("feature");
+
             $response = [
                 "success" => true,
                 "title" => ucwords(trans("managements/roles.title")),
                 "subTitle" => ucwords(trans("managements/roles.title")),
                 "role" => $role,
-                "permissions" => $permissions
+                "permissions" => $permissions,
+                "breadcrumbs" => $this->getBreadcrumbs(),
             ];
         } catch (EmptyDataException $e) {
             $response = [
@@ -63,10 +75,7 @@ class RoleService extends BaseService
                 "tes" => $e
             ];
         } catch (Exception $e) {
-            $response = [
-                "success" => false,
-                "message" => trans("general.error.somethingWentWrong")
-            ];
+            $response = getDefaultErrorResponse($e);
         }
 
         return $response;
@@ -84,6 +93,7 @@ class RoleService extends BaseService
     {
         try {
             $this->checkData($id);
+            /** @var Role $role */
             $role = $this->getServiceEntity();
             $role->syncPermissions($requestedData);
 
@@ -96,22 +106,9 @@ class RoleService extends BaseService
                 "message" => $e->getMessage()
             ];
         } catch (Exception $e) {
-            $response = [
-                "success" => false,
-                "message" => "Something went wrong"
-            ];
+            $response = getDefaultErrorResponse($e);
         }
 
         return $response;
-    }
-
-    private function setActivePermission(object|null &$permissions, object $role): void
-    {
-        $rolePermission =  array_flip($role->permissions->pluck("name")->toArray());
-        $permissions = collect($permissions)->map(function ($item) use ($rolePermission) {
-            $item["is_active"] = isset($rolePermission[$item["name"]]);
-
-            return $item;
-        });
     }
 }
