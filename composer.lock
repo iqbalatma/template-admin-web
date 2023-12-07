@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b2e063d3e52bd670761cb500934dfd2d",
+    "content-hash": "0ae8f6a07196e7d932b431a736ca2daf",
     "packages": [
         {
             "name": "archtechx/enums",
@@ -1063,6 +1063,49 @@
                 "source": "https://github.com/iqbalatma/laravel-service-repo/tree/1.0.27"
             },
             "time": "2023-07-15T02:12:47+00:00"
+        },
+        {
+            "name": "iqbalatma/laravel-utils",
+            "version": "1.3.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/iqbalatma/laravel-utils.git",
+                "reference": "cee6ac37fb83353f6d598b1cb0009e138e35e34e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/iqbalatma/laravel-utils/zipball/cee6ac37fb83353f6d598b1cb0009e138e35e34e",
+                "reference": "cee6ac37fb83353f6d598b1cb0009e138e35e34e",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Iqbalatma\\LaravelUtils\\LaravelUtilProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Iqbalatma\\LaravelUtils\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Iqbal Atma Muliawan",
+                    "email": "iqbalatma@gmail.com"
+                }
+            ],
+            "support": {
+                "issues": "https://github.com/iqbalatma/laravel-utils/issues",
+                "source": "https://github.com/iqbalatma/laravel-utils/tree/1.3.4"
+            },
+            "time": "2023-11-18T10:48:20+00:00"
         },
         {
             "name": "laravel/framework",
@@ -8327,5 +8370,5 @@
         "php": "^8.1"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }
