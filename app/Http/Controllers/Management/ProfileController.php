@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Management;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Management\Profiles\UpdateProfileRequest;
 use App\Services\Managements\ProfileService;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -12,9 +13,9 @@ class ProfileController extends Controller
 {
     /**
      * @param ProfileService $service
-     * @return Response
+     * @return Response|RedirectResponse
      */
-    public function edit(ProfileService $service): Response
+    public function edit(ProfileService $service): Response|RedirectResponse
     {
         $response = $service->getEditData();
         if ($this->isError($response, "dashboard")) return $this->getErrorResponse();
@@ -26,9 +27,9 @@ class ProfileController extends Controller
     /**
      * @param ProfileService $service
      * @param UpdateProfileRequest $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
-    public function update(ProfileService $service, UpdateProfileRequest $request)
+    public function update(ProfileService $service, UpdateProfileRequest $request): RedirectResponse
     {
         $response = $service->updateDataById($request->validated());
         if ($this->isError($response)) return $this->getErrorResponse();

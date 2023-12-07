@@ -2,11 +2,8 @@
     <div class="row">
         <div class="col-12">
             <div class="card mb-4">
-                <div class="card-header">
-                    <i class="fa-solid fa-address-card"></i>
-                    {{ $cardTitle }}
-                </div>
                 <div class="card-body">
+                    <h5 class="card-title mb-4">{{ $cardTitle ?? "" }}</h5>
                     <form class="row g-3" method="POST" action="{{ route('profiles.update') }}"
                           enctype="multipart/form-data">
                         @csrf

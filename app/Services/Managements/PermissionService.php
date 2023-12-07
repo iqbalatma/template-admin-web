@@ -12,6 +12,10 @@ class PermissionService extends BaseService
     public function __construct()
     {
         $this->repository = new PermissionRepository();
+        $this->breadcrumbs = [
+            "Management" => "#",
+            "Permissions" => route('permissions.index')
+        ];
     }
 
     /**
@@ -21,9 +25,11 @@ class PermissionService extends BaseService
     {
         return [
             "title" => ucwords(trans("managements/permissions.title")),
-            "subTitle" => ucfirst(trans("managements/permissions.subtitle")),
+            "pageTitle" => ucwords(trans("managements/permissions.title")),
+            "pageDescription" => ucfirst(trans("managements/permissions.subtitle")),
             "cardTitle" => ucwords(trans("managements/permissions.cardTitle")),
-            "permissions" => $this->repository->getAllDataPaginated()
+            "permissions" => $this->repository->getAllDataPaginated(),
+            "breadcrumbs" => $this->getBreadcrumbs()
         ];
     }
 

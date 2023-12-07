@@ -32,7 +32,8 @@ class RoleService extends BaseService
     {
         return [
             "title" => ucwords(trans("managements/roles.title")),
-            "subTitle" => ucfirst(trans("managements/roles.subTitle")),
+            "pageTitle" => ucwords(trans("managements/roles.title")),
+            "pageDescription" => ucfirst(trans("managements/roles.subTitle")),
             "cardTitle" => ucwords(trans("managements/roles.cardTitle")),
             "breadcrumbs" => $this->getBreadcrumbs(),
             "roles" => $this->repository->getAllData()

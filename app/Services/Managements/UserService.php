@@ -10,13 +10,14 @@ use Iqbalatma\LaravelServiceRepo\Exceptions\EmptyDataException;
 
 class UserService extends BaseService
 {
+    /** @var UserRepository  */
     protected $repository;
-    protected $roleRepo;
+    protected RoleRepository $roleRepository;
 
     public function __construct()
     {
         $this->repository = new UserRepository();
-        $this->roleRepo = new RoleRepository();
+        $this->roleRepository = new RoleRepository();
     }
 
     /**
@@ -42,7 +43,7 @@ class UserService extends BaseService
         try {
             $this->checkData($id);
             $user = $this->getServiceEntity();
-            $roles = $this->roleRepo->getAllData();
+            $roles = $this->roleRepository->getAllData();
             $this->setActiveRole($roles, $user);
             $response = [
                 "success" => true,
