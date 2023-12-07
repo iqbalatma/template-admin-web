@@ -7,12 +7,17 @@ use App\Http\Requests\Auth\AuthenticateRequest;
 use App\Services\Auth\AuthService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class AuthController extends Controller
 {
-    public function login(AuthService $service)
+    /**
+     * @param AuthService $service
+     * @return Response
+     */
+    public function login(AuthService $service): Response
     {
-        return view('auth.login', $service->getDataLogin());
+        return response()->view('auth.login', $service->getDataLogin());
     }
 
     public function authenticate(AuthService $service, AuthenticateRequest $request): RedirectResponse
