@@ -3,7 +3,7 @@
         <div class="col-12 col-lg-8">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{route('profiles.update')}}" enctype="multipart/form-data" method="POST">
+                    <form action="{{route('management.profiles.update')}}" enctype="multipart/form-data" method="POST">
                         @csrf
                         @method('PATCH')
                         <div class="form-group">

@@ -19,7 +19,7 @@ class ProfileService extends BaseService
         $this->repository = new UserRepository();
         $this->breadcrumbs = [
             "Management" => "#",
-            "Profile" => route('profiles.edit'),
+            "Profile" => route('management.profiles.edit'),
         ];
     }
 
