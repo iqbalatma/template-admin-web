@@ -2,15 +2,16 @@
 
 namespace App\Services\Managements;
 
+use App\Contracts\Abstracts\Services\BaseService;
+use App\Models\User;
 use App\Repositories\RoleRepository;
 use App\Repositories\UserRepository;
 use Exception;
-use Iqbalatma\LaravelServiceRepo\BaseService;
 use Iqbalatma\LaravelServiceRepo\Exceptions\EmptyDataException;
 
 class UserService extends BaseService
 {
-    /** @var UserRepository  */
+    /** @var UserRepository */
     protected $repository;
     protected RoleRepository $roleRepository;
 
@@ -18,6 +19,10 @@ class UserService extends BaseService
     {
         $this->repository = new UserRepository();
         $this->roleRepository = new RoleRepository();
+        $this->breadcrumbs = [
+            "Management" => "#",
+            "Users" => route('users.index')
+        ];
     }
 
     /**
@@ -27,30 +32,38 @@ class UserService extends BaseService
     {
         return [
             "title" => ucfirst(trans("managements/users.title")),
-            "subTitle" => ucfirst(trans("managements/users.subTitle")),
+            "pageTitle" => ucfirst(trans("managements/users.title")),
             "cardTitle" => ucwords(trans("managements/users.cardTitle")),
+            "breadcrumbs"=> $this->getBreadcrumbs(),
             "users" => $this->repository->getAllDataPaginated()
         ];
     }
 
 
     /**
-     * @param int $id
+     * @param string $id
      * @return array
      */
-    public function getDataById(int $id): array
+    public function getDataById(string $id): array
     {
         try {
             $this->checkData($id);
             $user = $this->getServiceEntity();
+
             $roles = $this->roleRepository->getAllData();
-            $this->setActiveRole($roles, $user);
+            RoleService::setActiveRole($roles, $user);
+
+            $this->addBreadCrumbs([
+                "Edit" => route('users.edit', $id)
+            ]);
+
             $response = [
                 "success" => true,
                 "subTitle" => ucfirst(trans("managements/users.subTitle")),
                 "title" => ucfirst(trans("managements/users.title")),
                 "user" => $user,
-                "roles" => $roles
+                "roles" => $roles,
+                "breadcrumbs"=> $this->getBreadcrumbs(),
             ];
         } catch (EmptyDataException $e) {
             $response = [
@@ -66,14 +79,15 @@ class UserService extends BaseService
 
 
     /**
-     * @param int $id
+     * @param string $id
      * @param array $requestedData
      * @return array|true[]
      */
-    public function updateDataById(int $id, array $requestedData): array
+    public function updateDataById(string $id, array $requestedData): array
     {
         try {
             $this->checkData($id);
+            /** @var User $user */
             $user = $this->getServiceEntity();
             $user->syncRoles($requestedData);
 
@@ -89,20 +103,5 @@ class UserService extends BaseService
             $response = getDefaultErrorResponse($e);
         }
         return $response;
-    }
-
-
-    /**
-     * @param object $roles
-     * @param object $user
-     * @return void
-     */
-    private function setActiveRole(object &$roles, object $user): void
-    {
-        $userRoles = array_flip($user->roles->pluck("name")->toArray());
-        $roles = collect($roles)->map(function ($item) use ($userRoles) {
-            $item["is_active"] = isset($userRoles[$item["name"]]);
-            return $item;
-        });
     }
 }

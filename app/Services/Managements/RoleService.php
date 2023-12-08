@@ -112,4 +112,20 @@ class RoleService extends BaseService
 
         return $response;
     }
+
+
+
+    /**
+     * @param object $roles
+     * @param object $user
+     * @return void
+     */
+    public static function setActiveRole(object &$roles, object $user): void
+    {
+        $userRoles = array_flip($user->roles->pluck("name")->toArray());
+        $roles = collect($roles)->map(function ($item) use ($userRoles) {
+            $item["is_active"] = isset($userRoles[$item["name"]]);
+            return $item;
+        });
+    }
 }

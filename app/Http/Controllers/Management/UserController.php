@@ -26,10 +26,10 @@ class UserController extends Controller
      * Use to show form edit
      *
      * @param UserService $service
-     * @param integer $id
+     * @param string $id
      * @return Response|RedirectResponse
      */
-    public function edit(UserService $service, int $id): Response|RedirectResponse
+    public function edit(UserService $service, string $id): Response|RedirectResponse
     {
         $response = $service->getDataById($id);
         if ($this->isError($response)) return $this->getErrorResponse();
@@ -43,10 +43,10 @@ class UserController extends Controller
      *
      * @param UserService $service
      * @param UpdateUserRequest $request
-     * @param integer $id
+     * @param string $id
      * @return RedirectResponse
      */
-    public function update(UserService $service, UpdateUserRequest $request, int $id): RedirectResponse
+    public function update(UserService $service, UpdateUserRequest $request, string $id): RedirectResponse
     {
         $response = $service->updateDataById($id, $request->validated());
 
