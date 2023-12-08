@@ -46,22 +46,22 @@
         <div class="sidebar-menu">
             <ul class="menu">
                 <li class="sidebar-title">Management</li>
-                <li class="sidebar-item">
-                    <a href="{{route('permissions.index')}}" class='sidebar-link'>
+                <li class="sidebar-item {{request()->is('management/permissions*') ? 'active' : ''}}">
+                    <a href="{{route('management.permissions.index')}}" class='sidebar-link'>
                         <i class="bi bi-person-fill-lock"></i>
                         <span>Permissions</span>
                     </a>
                 </li>
 
-                <li class="sidebar-item">
-                    <a href="{{route('roles.index')}}" class='sidebar-link'>
+                <li class="sidebar-item {{request()->is('management/roles*') ? 'active' : ''}}">
+                    <a href="{{route('management.roles.index')}}" class='sidebar-link'>
                         <i class="bi bi-person-gear"></i>
                         <span>Roles</span>
                     </a>
                 </li>
 
-                <li class="sidebar-item">
-                    <a href="{{route('users.index')}}" class='sidebar-link'>
+                <li class="sidebar-item {{request()->is('management/users*') ? 'active' : ''}}">
+                    <a href="{{route('management.users.index')}}" class='sidebar-link'>
                         <i class="bi bi-people-fill"></i>
                         <span>Users</span>
                     </a>
@@ -229,7 +229,7 @@
                 </li>
 
                 <li
-                    class="sidebar-item active has-sub">
+                    class="sidebar-item has-sub">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-grid-1x2-fill"></i>
                         <span>Layouts</span>

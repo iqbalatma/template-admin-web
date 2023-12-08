@@ -20,7 +20,7 @@
                                     <th scope="row">{{ $key+1 }}</th>
                                     <td>{{ $role->formattedName }}</td>
                                     <td>{{ $role->updated_at }}</td>
-                                    <td><a href="{{ route('roles.edit', $role->id) }}" class="btn btn-success">Edit</button></td>
+                                    <td><a href="{{ route('management.roles.edit', $role->id) }}" class="btn btn-success">Edit</a></td>
                                 </tr>
                                 @endforeach
                             </tbody>

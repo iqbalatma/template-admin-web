@@ -52,6 +52,6 @@ class UserController extends Controller
 
         if ($this->isError($response)) return $this->getErrorResponse();
 
-        return redirect()->route("users.index")->with("success", ucfirst(trans("managements/users.messages.updateSuccess")));
+        return redirect()->route("management.users.index")->with("success", ucfirst(trans("managements/users.messages.updateSuccess")));
     }
 }

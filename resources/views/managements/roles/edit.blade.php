@@ -10,7 +10,7 @@
                             <li class="list-group-item">Role : {{ $role->formatted_name }}</li>
                             <li class="list-group-item">Last Updated : {{ $role->updated_at }}</li>
                         </ul>
-                        <form id="roles.update" action="{{ route('roles.update', $role->id) }}" method="POST">
+                        <form id="roles.update" action="{{ route('management.roles.update', $role->id) }}" method="POST">
                             @csrf
                             @method("PUT")
                             <div class="permission mt-4">
@@ -35,8 +35,8 @@
                 </div>
                 <div class="card-footer">
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <a href="{{ route('roles.index') }}" class="btn btn-danger me-md-2" type="button">Cancel</a>
-                        <button type="submit" form="roles.update" class="btn btn-success me-md-2" type="button">Update</button>
+                        <a href="{{ route('management.roles.index') }}" class="btn btn-danger me-md-2" type="button">Cancel</a>
+                        <button type="submit" form="roles.update" class="btn btn-success me-md-2">Update</button>
                     </div>
                 </div>
             </div>

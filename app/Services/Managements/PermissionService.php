@@ -14,7 +14,7 @@ class PermissionService extends BaseService
         $this->repository = new PermissionRepository();
         $this->breadcrumbs = [
             "Management" => "#",
-            "Permissions" => route('permissions.index')
+            "Permissions" => route('management.permissions.index')
         ];
     }
 

@@ -32,7 +32,7 @@ Route::group([], __DIR__."/Auth/ForgotPasswordRoute.php");
 Route::group([], __DIR__."/Auth/RegistrationRoute.php");
 
 Route::middleware("auth")->group(function () {
-    Route::prefix("management")->group(function (){
+    Route::prefix("management")->name("management.")->group(function (){
         Route::get("/permissions", PermissionController::class)->name("permissions.index")->middleware("permission:".PermissionEnum::PERMISSIONS_INDEX->value);
         Route::group([], __DIR__ . "/Management/RoleRoute.php");
         Route::group([], __DIR__ . "/Management/UserRoute.php");

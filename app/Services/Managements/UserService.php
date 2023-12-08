@@ -21,7 +21,7 @@ class UserService extends BaseService
         $this->roleRepository = new RoleRepository();
         $this->breadcrumbs = [
             "Management" => "#",
-            "Users" => route('users.index')
+            "Users" => route('management.users.index')
         ];
     }
 

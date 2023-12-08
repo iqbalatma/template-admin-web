@@ -100,7 +100,7 @@
                             </h6>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="{{route('profiles.edit')}}">
+                            <a class="dropdown-item" href="{{route('management.profiles.edit')}}">
                                 <i class="icon-mid bi bi-person me-2"></i>
                                 My Profile
                             </a>

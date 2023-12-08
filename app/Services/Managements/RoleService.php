@@ -19,7 +19,7 @@ class RoleService extends BaseService
         $this->permissionRepo = new PermissionRepository();
         $this->breadcrumbs = [
             "Management" => "#",
-            "Roles" => route('roles.index'),
+            "Roles" => route('management.roles.index'),
         ];
     }
 
