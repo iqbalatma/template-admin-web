@@ -2,11 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use App\Enums\Table;
 use Spatie\Permission\Models\Permission as SpatieModelPermission;
 
 class Permission extends SpatieModelPermission
 {
-    protected $table = "permissions";
+    protected $table = Table::PERMISSIONS->value;
 }

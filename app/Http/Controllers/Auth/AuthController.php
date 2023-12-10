@@ -7,14 +7,24 @@ use App\Http\Requests\Auth\AuthenticateRequest;
 use App\Services\Auth\AuthService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class AuthController extends Controller
 {
-    public function login(AuthService $service)
+    /**
+     * @param AuthService $service
+     * @return Response
+     */
+    public function login(AuthService $service): Response
     {
-        return view('auth.login', $service->getDataLogin());
+        return response()->view('auth.login', $service->getDataLogin());
     }
 
+    /**
+     * @param AuthService $service
+     * @param AuthenticateRequest $request
+     * @return RedirectResponse
+     */
     public function authenticate(AuthService $service, AuthenticateRequest $request): RedirectResponse
     {
         $response = $service->authenticate($request->validated());
@@ -26,7 +36,12 @@ class AuthController extends Controller
         return redirect()->intended('dashboard');
     }
 
-    public function logout(AuthService $service, Request $request)
+    /**
+     * @param AuthService $service
+     * @param Request $request
+     * @return RedirectResponse
+     */
+    public function logout(AuthService $service, Request $request):RedirectResponse
     {
         $service->logout();
         $request->session()->invalidate();

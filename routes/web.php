@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\PermissionEnum;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Management\PermissionController;
@@ -31,8 +32,8 @@ Route::group([], __DIR__."/Auth/ForgotPasswordRoute.php");
 Route::group([], __DIR__."/Auth/RegistrationRoute.php");
 
 Route::middleware("auth")->group(function () {
-    Route::prefix("management")->group(function (){
-        Route::get("/permissions", PermissionController::class)->name("permissions.index")->middleware("permission:".\App\Statics\PermissionStatic::PERMISSIONS_INDEX);
+    Route::prefix("management")->name("management.")->group(function (){
+        Route::get("/permissions", PermissionController::class)->name("permissions.index")->middleware("permission:".PermissionEnum::PERMISSIONS_INDEX->value);
         Route::group([], __DIR__ . "/Management/RoleRoute.php");
         Route::group([], __DIR__ . "/Management/UserRoute.php");
         Route::group([], __DIR__ . "/Management/ProfileRoute.php");

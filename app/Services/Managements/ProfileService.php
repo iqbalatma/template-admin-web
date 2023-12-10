@@ -2,19 +2,25 @@
 
 namespace App\Services\Managements;
 
+use App\Contracts\Abstracts\Services\BaseService;
 use App\Repositories\UserRepository;
+use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-use Iqbalatma\LaravelServiceRepo\BaseService;
 use Iqbalatma\LaravelServiceRepo\Exceptions\EmptyDataException;
 
 class ProfileService extends BaseService
 {
+    /** @var UserRepository  */
     protected $repository;
 
     public function __construct()
     {
         $this->repository = new UserRepository();
+        $this->breadcrumbs = [
+            "Management" => "#",
+            "Profile" => route('management.profiles.edit'),
+        ];
     }
 
 
@@ -31,8 +37,10 @@ class ProfileService extends BaseService
                 "success" => true,
                 "user" => $user,
                 "title" => "Profile",
-                "cardTitle" => "Profile",
-                "subTitle" => "Profile",
+                "pageTitle" => "Profile",
+                "pageDescription" => "Update detail information on profile",
+                "cardTitle" => "Update Profile",
+                "breadcrumbs" => $this->getBreadcrumbs()
             ];
         } catch (EmptyDataException $e) {
             $response = [
@@ -40,7 +48,7 @@ class ProfileService extends BaseService
                 "message" => $e->getMessage()
             ];
         } catch (Exception $e) {
-            $response = getDefaultErrorResponse();
+            $response = getDefaultErrorResponse($e);
         }
 
         return  $response;
@@ -64,7 +72,6 @@ class ProfileService extends BaseService
                 $requestedData["profile_image"] = $uploaded;
             }
 
-
 //            save data
             $user->fill($requestedData);
             $user->save();
@@ -72,7 +79,7 @@ class ProfileService extends BaseService
             $response = [
                 "success" => true
             ];
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $response = getDefaultErrorResponse($e);
         }
 

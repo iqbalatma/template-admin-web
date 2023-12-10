@@ -20,7 +20,7 @@
                                     <td>{{ $users->firstItem()+$key }}</td>
                                     <td>{{ $user->name}}</td>
                                     <td>{{ $user->email}}</td>
-                                    <td><a href="{{ route('users.edit', $user->id) }}" class="btn btn-success">{{ ucwords(trans('general.button.edit')) }}</a></td>
+                                    <td><a href="{{ route('management.users.edit', $user->id) }}" class="btn btn-success">{{ ucwords(trans('general.button.edit')) }}</a></td>
                                 </tr>
                                 @endforeach
                             </tbody>

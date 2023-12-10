@@ -2,10 +2,12 @@
 
 namespace App\View\Components\Dashboard;
 
+use Illuminate\Support\Facades\View as FacadesView;
 use Illuminate\View\Component;
 
 class Layout extends Component
 {
+    public string $lastBreadcrumbKey;
 
     /**
      * Create a new component instance.
@@ -14,7 +16,8 @@ class Layout extends Component
      */
     public function __construct()
     {
-
+        $breadcrumbs = array_keys(FacadesView::getShared()["breadcrumbs"]);
+        $this->lastBreadcrumbKey = end($breadcrumbs);
     }
 
     /**

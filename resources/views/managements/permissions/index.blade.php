@@ -11,6 +11,7 @@
                                     <th scope="col">No</th>
                                     <th scope="col">{{ ucwords(trans('managements/permissions.table.permissionRule')) }}</th>
                                     <th scope="col">{{ ucwords(trans("managements/permissions.table.description")) }}</th>
+                                    <th scope="col">{{ucwords("feature")}}</th>
                                     <th scope="col">{{ ucwords(trans("managements/permissions.table.lastUpdated")) }}</th>
                                 </tr>
                             </thead>
@@ -20,6 +21,7 @@
                                     <th scope="row">{{ $permissions->firstItem()+$key }}</th>
                                     <td>{{ $permission->name }}</td>
                                     <td>{{ $permission->description }}</td>
+                                    <td>{{ $permission->feature }}</td>
                                     <td>{{ $permission->updated_at }}</td>
                                 </tr>
                                 @endforeach
