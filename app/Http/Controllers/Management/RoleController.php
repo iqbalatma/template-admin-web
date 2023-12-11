@@ -54,6 +54,6 @@ class RoleController extends Controller
 
         if ($this->isError($response)) return $this->getErrorResponse();
 
-        return redirect()->route("roles.index")->with("success", ucfirst(trans("managements/roles.messages.updateSuccess")));
+        return redirect()->route("management.roles.index")->with("success", ucfirst(trans("managements/roles.messages.updateSuccess")));
     }
 }
