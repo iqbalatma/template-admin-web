@@ -2,9 +2,9 @@
 
 namespace App\Services\Auth;
 
+use App\Contracts\Abstracts\Services\BaseService;
 use App\Contracts\Interfaces\Auth\AuthServiceInterface;
 use Illuminate\Support\Facades\Auth;
-use Iqbalatma\LaravelServiceRepo\BaseService;
 
 
 class AuthService extends BaseService implements AuthServiceInterface

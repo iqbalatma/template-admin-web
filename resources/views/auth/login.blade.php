@@ -68,7 +68,7 @@
                             <a href="{{ route('registration.create') }}" class="font-bold">Sign up</a>.
                         </p>
                         <p>
-                            <a class="font-bold" href="{{ route('forgot.password.index') }}">Forgot password?</a>.
+                            <a class="font-bold" href="{{ route('forgot.password.show.request.forgot.password') }}">Forgot password?</a>.
                         </p>
                     </div>
                 </div>
