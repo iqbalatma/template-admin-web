@@ -53,7 +53,7 @@
                             @enderror
                         </div>
                         <div class="form-check form-check-lg d-flex align-items-end">
-                            <input class="form-check-input me-2" type="checkbox" value="" id="rememberme" name="rememberme" />
+                            <input class="form-check-input me-2" type="checkbox" id="rememberme" name="rememberme" />
                             <label class="form-check-label text-gray-600" for="rememberme">
                                 Keep me logged in
                             </label>

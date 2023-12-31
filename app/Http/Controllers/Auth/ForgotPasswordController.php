@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ResetPasswordRequest;
 use App\Http\Requests\ResetTokenRequest;
 use App\Http\Services\Auth\ForgotPasswordService;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class ForgotPasswordController extends Controller

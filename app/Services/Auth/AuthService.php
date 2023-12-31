@@ -15,7 +15,13 @@ class AuthService extends BaseService implements AuthServiceInterface
      */
     public function authenticate(array $requestedData): array
     {
-        $response = Auth::attempt($requestedData, $requestedData['rememberme'] ?? false) ?
+        $rememberme = false;
+        if (isset($requestedData["rememberme"]) && $requestedData["rememberme"] === "on") {
+            $rememberme = true;
+            unset($requestedData["rememberme"]);
+        }
+
+        $response = Auth::attempt($requestedData, $rememberme) ?
             ["success" => true] :
             ["success" => false, "message" => "Invalid username or password"];
         return $response;
