@@ -10,6 +10,20 @@ use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
 {
+    public const DATA_USER = [
+        [
+            "name" => "iqbal atma muliawan",
+            "email" => "iqbalatma@gmail.com",
+            "email_verified_at" => now(),
+            "password" => "admin"
+        ],
+        [
+            "name" => "admin",
+            "email" => "admin@gmail.com",
+            "email_verified_at" => now(),
+            "password" => "admin"
+        ]
+    ];
     /**
      * Run the database seeds.
      *
@@ -17,21 +31,17 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        $superadmin = User::create([
-            "name" => "iqbal atma muliawan",
-            "email" => "iqbalatma@gmail.com",
-            "email_verified_at" => now(),
-            "password" => "admin"
-        ]);
-        $superadmin->assignRole(RoleEnum::SUPERADMIN->value);
+        foreach (self::DATA_USER as $key => $user) {
+            $createdUser = User::create($user);
 
-        $admin = User::create([
-            "name" => "admin",
-            "email" => "admin@gmail.com",
-            "email_verified_at" => now(),
-            "password" => "admin"
-        ]);
-        $admin->assignRole(RoleEnum::ADMIN->value);
+            if ($createdUser->email === "iqbalatma@gmail.com") {
+                $createdUser->assignRole(RoleEnum::SUPERADMIN->value);
+            }
+
+            if ($createdUser->email === "admin@gmail.com") {
+                $createdUser->assignRole(RoleEnum::ADMIN->value);
+            }
+        }
 
         User::factory()->count(100)->create();
     }
