@@ -24,7 +24,7 @@ class AuthService extends BaseService implements AuthServiceInterface
     /**
      * @return array
      */
-    public function getDataLogin(): array
+    public function getLoginData(): array
     {
         return [
             "title" => "Login"
