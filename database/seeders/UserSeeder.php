@@ -14,13 +14,13 @@ class UserSeeder extends Seeder
         [
             "name" => "iqbal atma muliawan",
             "email" => "iqbalatma@gmail.com",
-            "email_verified_at" => now(),
+            "email_verified_at" => "2023-12-31 08:38:35",
             "password" => "admin"
         ],
         [
             "name" => "admin",
             "email" => "admin@gmail.com",
-            "email_verified_at" => now(),
+            "email_verified_at" => "2023-12-31 08:38:35",
             "password" => "admin"
         ]
     ];

@@ -9,6 +9,9 @@ use Spatie\Permission\Models\Role as SpatieModelRole;
 class Role extends SpatieModelRole
 {
     protected $table = Table::ROLES->value;
+    protected $fillable = [
+        "name", "guard_name", "is_mutable"
+    ];
     public function formattedName(): Attribute
     {
         return Attribute::make(
