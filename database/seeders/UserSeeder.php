@@ -32,6 +32,7 @@ class UserSeeder extends Seeder
     public function run()
     {
         foreach (self::DATA_USER as $key => $user) {
+            $user["password"] = Hash::make($user["password"]);
             $createdUser = User::create($user);
 
             if ($createdUser->email === "iqbalatma@gmail.com") {

@@ -54,6 +54,6 @@ class ForgotPasswordController extends Controller
         $response = $service->resetPassword($request->validated());
         if ($this->isError($response)) return $this->getErrorResponse();
 
-        return redirect()->back()->with("success", "Reset password successfully");
+        return redirect()->route('auth.login')->with("success", "Reset password successfully");
     }
 }
