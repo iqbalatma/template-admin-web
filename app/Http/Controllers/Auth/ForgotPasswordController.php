@@ -28,10 +28,8 @@ class ForgotPasswordController extends Controller
     public function requestToken(ForgotPasswordService $service, RequestTokenRequest $request):RedirectResponse
     {
         $response = $service->requestResetPassword($request->validated());
-        if ($response) {
-            return redirect()->back()->with("success", "Reset password link has been sent to your email !");
-        }
-        return redirect()->back()->with("failed", "Reset password failed !");
+        if ($this->isError($response)) return $this->getErrorResponse();
+        return redirect()->back()->with("success", "Reset password link has been sent to your email !");
     }
 
     // public function resetPassword(ForgotPasswordService $service, ResetPasswordRequest $request)

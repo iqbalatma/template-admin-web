@@ -4,6 +4,7 @@ namespace App\Services\Auth;
 
 use App\Contracts\Abstracts\Services\BaseService;
 use Exception;
+use Illuminate\Support\Facades\Password;
 
 class ForgotPasswordService extends BaseService
 {
@@ -32,9 +33,12 @@ class ForgotPasswordService extends BaseService
     public function requestResetPassword(array $requestedData): array
     {
         try {
-            $response = [
-                "success" => true,
-            ];
+            $status = Password::sendResetLink($requestedData);
+
+
+            $response = $status === Password::RESET_LINK_SENT
+                ? ["success" => true, "message" => __($status)]
+                : ["success" => false, "message" => __($status)];
         } catch (Exception $e) {
             $response = getDefaultErrorResponse($e);
         }
