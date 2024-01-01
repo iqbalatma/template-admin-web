@@ -3,27 +3,36 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ResetPasswordRequest;
-use App\Http\Requests\ResetTokenRequest;
+use App\Http\Requests\RequestTokenRequest;
 use App\Services\Auth\ForgotPasswordService;
 use Illuminate\Http\Response;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class ForgotPasswordController extends Controller
 {
+    /**
+     * @param ForgotPasswordService $service
+     * @return Response
+     */
     public function showRequestForgotPassword(ForgotPasswordService $service): Response
     {
-        viewShare($service->getIndexData());
+        viewShare($service->getShowRequestPasswordData());
         return response()->view("auth.forgot-password");
     }
 
-    // public function requestToken(ForgotPasswordService $service, ResetTokenRequest $request)
-    // {
-    //     $reseted = $service->requestToken($request->validated());
-    //     if ($reseted) {
-    //         return redirect()->back()->with("success", "Reset password link has been sent to your email !");
-    //     }
-    //     return redirect()->back()->with("failed", "Reset password failed !");
-    // }
+    /**
+     * @param ForgotPasswordService $service
+     * @param RequestTokenRequest $request
+     * @return RedirectResponse
+     */
+    public function requestToken(ForgotPasswordService $service, RequestTokenRequest $request):RedirectResponse
+    {
+        $response = $service->requestResetPassword($request->validated());
+        if ($response) {
+            return redirect()->back()->with("success", "Reset password link has been sent to your email !");
+        }
+        return redirect()->back()->with("failed", "Reset password failed !");
+    }
 
     // public function resetPassword(ForgotPasswordService $service, ResetPasswordRequest $request)
     // {
