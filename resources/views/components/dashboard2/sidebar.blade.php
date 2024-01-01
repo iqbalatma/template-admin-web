@@ -3,8 +3,7 @@
         <div class="sidebar-header position-relative">
             <div class="d-flex justify-content-between align-items-center">
                 <div class="logo">
-                    <a href="{{route('dashboard.index')}}"><img
-                            src="{{asset('mazer/assets/compiled/svg/logo.svg')}}" alt="Logo" srcset=""></a>
+                    <a href="index.html"><img src="./assets/compiled/svg/logo.svg" alt="Logo" srcset=""></a>
                 </div>
                 <div class="theme-toggle d-flex gap-2  align-items-center mt-2">
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -46,11 +45,34 @@
         </div>
         <div class="sidebar-menu">
             <ul class="menu">
+                <li class="sidebar-title">Management</li>
+                <li class="sidebar-item {{request()->is('management/permissions*') ? 'active' : ''}}">
+                    <a href="{{route('management.master.permissions.index')}}" class='sidebar-link'>
+                        <i class="bi bi-person-fill-lock"></i>
+                        <span>Permissions</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item {{request()->is('management/roles*') ? 'active' : ''}}">
+                    <a href="{{route('management.roles.index')}}" class='sidebar-link'>
+                        <i class="bi bi-person-gear"></i>
+                        <span>Roles</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item {{request()->is('management/users*') ? 'active' : ''}}">
+                    <a href="{{route('management.users.index')}}" class='sidebar-link'>
+                        <i class="bi bi-people-fill"></i>
+                        <span>Users</span>
+                    </a>
+                </li>
+
+
                 <li class="sidebar-title">Menu</li>
 
                 <li
                     class="sidebar-item  ">
-                    <a href="/mazer/index.html" class='sidebar-link'>
+                    <a href="index.html" class='sidebar-link'>
                         <i class="bi bi-grid-fill"></i>
                         <span>Dashboard</span>
                     </a>
@@ -68,87 +90,87 @@
                     <ul class="submenu ">
 
                         <li class="submenu-item  ">
-                            <a href="/mazer/component-accordion.html" class="submenu-link">Accordion</a>
+                            <a href="component-accordion.html" class="submenu-link">Accordion</a>
 
                         </li>
 
                         <li class="submenu-item  ">
-                            <a href="/mazer/component-alert.html" class="submenu-link">Alert</a>
+                            <a href="component-alert.html" class="submenu-link">Alert</a>
 
                         </li>
 
                         <li class="submenu-item  ">
-                            <a href="/mazer/component-badge.html" class="submenu-link">Badge</a>
+                            <a href="component-badge.html" class="submenu-link">Badge</a>
 
                         </li>
 
                         <li class="submenu-item  ">
-                            <a href="/mazer/component-breadcrumb.html" class="submenu-link">Breadcrumb</a>
+                            <a href="component-breadcrumb.html" class="submenu-link">Breadcrumb</a>
 
                         </li>
 
                         <li class="submenu-item  ">
-                            <a href="/mazer/component-button.html" class="submenu-link">Button</a>
+                            <a href="component-button.html" class="submenu-link">Button</a>
 
                         </li>
 
                         <li class="submenu-item  ">
-                            <a href="/mazer/component-card.html" class="submenu-link">Card</a>
+                            <a href="component-card.html" class="submenu-link">Card</a>
 
                         </li>
 
                         <li class="submenu-item  ">
-                            <a href="/mazer/component-carousel.html" class="submenu-link">Carousel</a>
+                            <a href="component-carousel.html" class="submenu-link">Carousel</a>
 
                         </li>
 
                         <li class="submenu-item  ">
-                            <a href="/mazer/component-collapse.html" class="submenu-link">Collapse</a>
+                            <a href="component-collapse.html" class="submenu-link">Collapse</a>
 
                         </li>
 
                         <li class="submenu-item  ">
-                            <a href="/mazer/component-dropdown.html" class="submenu-link">Dropdown</a>
+                            <a href="component-dropdown.html" class="submenu-link">Dropdown</a>
 
                         </li>
 
                         <li class="submenu-item  ">
-                            <a href="/mazer/component-list-group.html" class="submenu-link">List Group</a>
+                            <a href="component-list-group.html" class="submenu-link">List Group</a>
 
                         </li>
 
                         <li class="submenu-item  ">
-                            <a href="/mazer/component-modal.html" class="submenu-link">Modal</a>
+                            <a href="component-modal.html" class="submenu-link">Modal</a>
 
                         </li>
 
                         <li class="submenu-item  ">
-                            <a href="/mazer/component-navs.html" class="submenu-link">Navs</a>
+                            <a href="component-navs.html" class="submenu-link">Navs</a>
 
                         </li>
 
                         <li class="submenu-item  ">
-                            <a href="/mazer/component-pagination.html" class="submenu-link">Pagination</a>
+                            <a href="component-pagination.html" class="submenu-link">Pagination</a>
 
                         </li>
 
                         <li class="submenu-item  ">
-                            <a href="/mazer/component-progress.html" class="submenu-link">Progress</a>
+                            <a href="component-progress.html" class="submenu-link">Progress</a>
 
                         </li>
 
                         <li class="submenu-item  ">
-                            <a href="/mazer/component-spinner.html" class="submenu-link">Spinner</a>
+                            <a href="component-spinner.html" class="submenu-link">Spinner</a>
 
                         </li>
 
                         <li class="submenu-item  ">
-                            <a href="/mazer/component-toasts.html" class="submenu-link">Toasts</a>
+                            <a href="component-toasts.html" class="submenu-link">Toasts</a>
 
                         </li>
 
                         <li class="submenu-item  ">
-                            <a href="/mazer/component-tooltip.html" class="submenu-link">Tooltip</a>
+                            <a href="component-tooltip.html" class="submenu-link">Tooltip</a>
 
                         </li>
 
@@ -167,37 +189,37 @@
                     <ul class="submenu ">
 
                         <li class="submenu-item  ">
-                            <a href="/mazer/extra-component-avatar.html" class="submenu-link">Avatar</a>
+                            <a href="extra-component-avatar.html" class="submenu-link">Avatar</a>
 
                         </li>
 
                         <li class="submenu-item  ">
-                            <a href="/mazer/extra-component-comment.html" class="submenu-link">Comment</a>
+                            <a href="extra-component-comment.html" class="submenu-link">Comment</a>
 
                         </li>
 
                         <li class="submenu-item  ">
-                            <a href="/mazer/extra-component-divider.html" class="submenu-link">Divider</a>
+                            <a href="extra-component-divider.html" class="submenu-link">Divider</a>
 
                         </li>
 
                         <li class="submenu-item  ">
-                            <a href="/mazer/extra-component-date-picker.html" class="submenu-link">Date Picker</a>
+                            <a href="extra-component-date-picker.html" class="submenu-link">Date Picker</a>
 
                         </li>
 
                         <li class="submenu-item  ">
-                            <a href="/mazer/extra-component-sweetalert.html" class="submenu-link">Sweet Alert</a>
+                            <a href="extra-component-sweetalert.html" class="submenu-link">Sweet Alert</a>
 
                         </li>
 
                         <li class="submenu-item  ">
-                            <a href="/mazer/extra-component-toastify.html" class="submenu-link">Toastify</a>
+                            <a href="extra-component-toastify.html" class="submenu-link">Toastify</a>
 
                         </li>
 
                         <li class="submenu-item  ">
-                            <a href="/mazer/extra-component-rating.html" class="submenu-link">Rating</a>
+                            <a href="extra-component-rating.html" class="submenu-link">Rating</a>
 
                         </li>
 
@@ -207,7 +229,7 @@
                 </li>
 
                 <li
-                    class="sidebar-item active has-sub">
+                    class="sidebar-item has-sub">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-grid-1x2-fill"></i>
                         <span>Layouts</span>
@@ -216,27 +238,27 @@
                     <ul class="submenu active">
 
                         <li class="submenu-item  ">
-                            <a href="/mazer/layout-default.html" class="submenu-link">Default Layout</a>
+                            <a href="layout-default.html" class="submenu-link">Default Layout</a>
 
                         </li>
 
                         <li class="submenu-item  ">
-                            <a href="/mazer/layout-vertical-1-column.html" class="submenu-link">1 Column</a>
+                            <a href="layout-vertical-1-column.html" class="submenu-link">1 Column</a>
 
                         </li>
 
                         <li class="submenu-item active ">
-                            <a href="/mazer/layout-vertical-navbar.html" class="submenu-link">Vertical Navbar</a>
+                            <a href="layout-vertical-navbar.html" class="submenu-link">Vertical Navbar</a>
 
                         </li>
 
                         <li class="submenu-item  ">
-                            <a href="/mazer/layout-rtl.html" class="submenu-link">RTL Layout</a>
+                            <a href="layout-rtl.html" class="submenu-link">RTL Layout</a>
 
                         </li>
 
                         <li class="submenu-item  ">
-                            <a href="/mazer/layout-horizontal.html" class="submenu-link">Horizontal Menu</a>
+                            <a href="layout-horizontal.html" class="submenu-link">Horizontal Menu</a>
 
                         </li>
 
@@ -257,32 +279,32 @@
                     <ul class="submenu ">
 
                         <li class="submenu-item  ">
-                            <a href="/mazer/form-element-input.html" class="submenu-link">Input</a>
+                            <a href="form-element-input.html" class="submenu-link">Input</a>
 
                         </li>
 
                         <li class="submenu-item  ">
-                            <a href="/mazer/form-element-input-group.html" class="submenu-link">Input Group</a>
+                            <a href="form-element-input-group.html" class="submenu-link">Input Group</a>
 
                         </li>
 
                         <li class="submenu-item  ">
-                            <a href="/mazer/form-element-select.html" class="submenu-link">Select</a>
+                            <a href="form-element-select.html" class="submenu-link">Select</a>
 
                         </li>
 
                         <li class="submenu-item  ">
-                            <a href="/mazer/form-element-radio.html" class="submenu-link">Radio</a>
+                            <a href="form-element-radio.html" class="submenu-link">Radio</a>
 
                         </li>
 
                         <li class="submenu-item  ">
-                            <a href="/mazer/form-element-checkbox.html" class="submenu-link">Checkbox</a>
+                            <a href="form-element-checkbox.html" class="submenu-link">Checkbox</a>
 
                         </li>
 
                         <li class="submenu-item  ">
-                            <a href="/mazer/form-element-textarea.html" class="submenu-link">Textarea</a>
+                            <a href="form-element-textarea.html" class="submenu-link">Textarea</a>
 
                         </li>
 
@@ -293,7 +315,7 @@
 
                 <li
                     class="sidebar-item  ">
-                    <a href="/mazer/form-layout.html" class='sidebar-link'>
+                    <a href="form-layout.html" class='sidebar-link'>
                         <i class="bi bi-file-earmark-medical-fill"></i>
                         <span>Form Layout</span>
                     </a>
@@ -311,7 +333,7 @@
                     <ul class="submenu ">
 
                         <li class="submenu-item  ">
-                            <a href="/mazer/form-validation-parsley.html" class="submenu-link">Parsley</a>
+                            <a href="form-validation-parsley.html" class="submenu-link">Parsley</a>
 
                         </li>
 
@@ -330,22 +352,22 @@
                     <ul class="submenu ">
 
                         <li class="submenu-item  ">
-                            <a href="/mazer/form-editor-quill.html" class="submenu-link">Quill</a>
+                            <a href="form-editor-quill.html" class="submenu-link">Quill</a>
 
                         </li>
 
                         <li class="submenu-item  ">
-                            <a href="/mazer/form-editor-ckeditor.html" class="submenu-link">CKEditor</a>
+                            <a href="form-editor-ckeditor.html" class="submenu-link">CKEditor</a>
 
                         </li>
 
                         <li class="submenu-item  ">
-                            <a href="/mazer/form-editor-summernote.html" class="submenu-link">Summernote</a>
+                            <a href="form-editor-summernote.html" class="submenu-link">Summernote</a>
 
                         </li>
 
                         <li class="submenu-item  ">
-                            <a href="/mazer/form-editor-tinymce.html" class="submenu-link">TinyMCE</a>
+                            <a href="form-editor-tinymce.html" class="submenu-link">TinyMCE</a>
 
                         </li>
 
@@ -356,7 +378,7 @@
 
                 <li
                     class="sidebar-item  ">
-                    <a href="/mazer/table.html" class='sidebar-link'>
+                    <a href="table.html" class='sidebar-link'>
                         <i class="bi bi-grid-1x2-fill"></i>
                         <span>Table</span>
                     </a>
@@ -374,12 +396,12 @@
                     <ul class="submenu ">
 
                         <li class="submenu-item  ">
-                            <a href="/mazer/table-datatable.html" class="submenu-link">Datatable</a>
+                            <a href="table-datatable.html" class="submenu-link">Datatable</a>
 
                         </li>
 
                         <li class="submenu-item  ">
-                            <a href="/mazer/table-datatable-jquery.html" class="submenu-link">Datatable (jQuery)</a>
+                            <a href="table-datatable-jquery.html" class="submenu-link">Datatable (jQuery)</a>
 
                         </li>
 
@@ -400,17 +422,17 @@
                     <ul class="submenu ">
 
                         <li class="submenu-item  ">
-                            <a href="/mazer/ui-widgets-chatbox.html" class="submenu-link">Chatbox</a>
+                            <a href="ui-widgets-chatbox.html" class="submenu-link">Chatbox</a>
 
                         </li>
 
                         <li class="submenu-item  ">
-                            <a href="/mazer/ui-widgets-pricing.html" class="submenu-link">Pricing</a>
+                            <a href="ui-widgets-pricing.html" class="submenu-link">Pricing</a>
 
                         </li>
 
                         <li class="submenu-item  ">
-                            <a href="/mazer/ui-widgets-todolist.html" class="submenu-link">To-do List</a>
+                            <a href="ui-widgets-todolist.html" class="submenu-link">To-do List</a>
 
                         </li>
 
@@ -429,17 +451,17 @@
                     <ul class="submenu ">
 
                         <li class="submenu-item  ">
-                            <a href="/mazer/ui-icons-bootstrap-icons.html" class="submenu-link">Bootstrap Icons </a>
+                            <a href="ui-icons-bootstrap-icons.html" class="submenu-link">Bootstrap Icons </a>
 
                         </li>
 
                         <li class="submenu-item  ">
-                            <a href="/mazer/ui-icons-fontawesome.html" class="submenu-link">Fontawesome</a>
+                            <a href="ui-icons-fontawesome.html" class="submenu-link">Fontawesome</a>
 
                         </li>
 
                         <li class="submenu-item  ">
-                            <a href="/mazer/ui-icons-dripicons.html" class="submenu-link">Dripicons</a>
+                            <a href="ui-icons-dripicons.html" class="submenu-link">Dripicons</a>
 
                         </li>
 
@@ -458,12 +480,12 @@
                     <ul class="submenu ">
 
                         <li class="submenu-item  ">
-                            <a href="/mazer/ui-chart-chartjs.html" class="submenu-link">ChartJS</a>
+                            <a href="ui-chart-chartjs.html" class="submenu-link">ChartJS</a>
 
                         </li>
 
                         <li class="submenu-item  ">
-                            <a href="/mazer/ui-chart-apexcharts.html" class="submenu-link">Apexcharts</a>
+                            <a href="ui-chart-apexcharts.html" class="submenu-link">Apexcharts</a>
 
                         </li>
 
@@ -474,7 +496,7 @@
 
                 <li
                     class="sidebar-item  ">
-                    <a href="/mazer/ui-file-uploader.html" class='sidebar-link'>
+                    <a href="ui-file-uploader.html" class='sidebar-link'>
                         <i class="bi bi-cloud-arrow-up-fill"></i>
                         <span>File Uploader</span>
                     </a>
@@ -492,12 +514,12 @@
                     <ul class="submenu ">
 
                         <li class="submenu-item  ">
-                            <a href="/mazer/ui-map-google-map.html" class="submenu-link">Google Map</a>
+                            <a href="ui-map-google-map.html" class="submenu-link">Google Map</a>
 
                         </li>
 
                         <li class="submenu-item  ">
-                            <a href="/mazer/ui-map-jsvectormap.html" class="submenu-link">JS Vector Map</a>
+                            <a href="ui-map-jsvectormap.html" class="submenu-link">JS Vector Map</a>
 
                         </li>
 
@@ -522,7 +544,7 @@
 
 
                                 <li class="submenu-item ">
-                                    <a href="/mazer/ui-multi-level-menu.html" class="submenu-link">Second Level</a>
+                                    <a href="ui-multi-level-menu.html" class="submenu-link">Second Level</a>
                                 </li>
 
                                 <li class="submenu-item ">
@@ -558,7 +580,7 @@
 
                 <li
                     class="sidebar-item  ">
-                    <a href="/mazer/application-email.html" class='sidebar-link'>
+                    <a href="application-email.html" class='sidebar-link'>
                         <i class="bi bi-envelope-fill"></i>
                         <span>Email Application</span>
                     </a>
@@ -568,7 +590,7 @@
 
                 <li
                     class="sidebar-item  ">
-                    <a href="/mazer/application-chat.html" class='sidebar-link'>
+                    <a href="application-chat.html" class='sidebar-link'>
                         <i class="bi bi-chat-dots-fill"></i>
                         <span>Chat Application</span>
                     </a>
@@ -578,7 +600,7 @@
 
                 <li
                     class="sidebar-item  ">
-                    <a href="/mazer/application-gallery.html" class='sidebar-link'>
+                    <a href="application-gallery.html" class='sidebar-link'>
                         <i class="bi bi-image-fill"></i>
                         <span>Photo Gallery</span>
                     </a>
@@ -588,7 +610,7 @@
 
                 <li
                     class="sidebar-item  ">
-                    <a href="/mazer/application-checkout.html" class='sidebar-link'>
+                    <a href="application-checkout.html" class='sidebar-link'>
                         <i class="bi bi-basket-fill"></i>
                         <span>Checkout Page</span>
                     </a>
@@ -606,12 +628,12 @@
                     <ul class="submenu ">
 
                         <li class="submenu-item  ">
-                            <a href="/mazer/account-profile.html" class="submenu-link">Profile</a>
+                            <a href="account-profile.html" class="submenu-link">Profile</a>
 
                         </li>
 
                         <li class="submenu-item  ">
-                            <a href="/mazer/account-security.html" class="submenu-link">Security</a>
+                            <a href="account-security.html" class="submenu-link">Security</a>
 
                         </li>
 
@@ -630,17 +652,17 @@
                     <ul class="submenu ">
 
                         <li class="submenu-item  ">
-                            <a href="/mazer/auth-login.html" class="submenu-link">Login</a>
+                            <a href="auth-login.html" class="submenu-link">Login</a>
 
                         </li>
 
                         <li class="submenu-item  ">
-                            <a href="/mazer/auth-register.html" class="submenu-link">Register</a>
+                            <a href="auth-register.html" class="submenu-link">Register</a>
 
                         </li>
 
                         <li class="submenu-item  ">
-                            <a href="/mazer/auth-forgot-password.html" class="submenu-link">Forgot Password</a>
+                            <a href="auth-forgot-password.html" class="submenu-link">Forgot Password</a>
 
                         </li>
 
@@ -659,17 +681,17 @@
                     <ul class="submenu ">
 
                         <li class="submenu-item  ">
-                            <a href="/mazer/error-403.html" class="submenu-link">403</a>
+                            <a href="error-403.html" class="submenu-link">403</a>
 
                         </li>
 
                         <li class="submenu-item  ">
-                            <a href="/mazer/error-404.html" class="submenu-link">404</a>
+                            <a href="error-404.html" class="submenu-link">404</a>
 
                         </li>
 
                         <li class="submenu-item  ">
-                            <a href="/mazer/error-500.html" class="submenu-link">500</a>
+                            <a href="error-500.html" class="submenu-link">500</a>
 
                         </li>
 

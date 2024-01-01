@@ -4,6 +4,7 @@
             <a href="#" class="burger-btn d-block">
                 <i class="bi bi-justify fs-3"></i>
             </a>
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -98,8 +99,12 @@
                                 Hello, {{ auth()->user()->name }}
                             </h6>
                         </li>
-                        <li><a class="dropdown-item" href="#"><i class="icon-mid bi bi-person me-2"></i> My
-                                Profile</a></li>
+                        <li>
+                            <a class="dropdown-item" href="{{route('management.profiles.edit')}}">
+                                <i class="icon-mid bi bi-person me-2"></i>
+                                My Profile
+                            </a>
+                        </li>
                         <li><a class="dropdown-item" href="#"><i class="icon-mid bi bi-gear me-2"></i>
                                 Settings</a></li>
                         <li><a class="dropdown-item" href="#"><i class="icon-mid bi bi-wallet me-2"></i>
