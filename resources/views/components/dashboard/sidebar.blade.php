@@ -47,7 +47,7 @@
             <ul class="menu">
                 <li class="sidebar-title">Management</li>
                 <li class="sidebar-item {{request()->is('management/permissions*') ? 'active' : ''}}">
-                    <a href="{{route('management.permissions.index')}}" class='sidebar-link'>
+                    <a href="{{route('management.master.permissions.index')}}" class='sidebar-link'>
                         <i class="bi bi-person-fill-lock"></i>
                         <span>Permissions</span>
                     </a>

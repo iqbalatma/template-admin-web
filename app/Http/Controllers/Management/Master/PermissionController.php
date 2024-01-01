@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Management;
+namespace App\Http\Controllers\Management\Master;
 
 use App\Http\Controllers\Controller;
-use App\Services\Managements\PermissionService;
+use App\Services\Managements\Master\PermissionService;
 use Illuminate\Http\Response;
 
 class PermissionController extends Controller
@@ -17,6 +17,6 @@ class PermissionController extends Controller
     public function __invoke(PermissionService $service): Response
     {
         viewShare($service->getAllData());
-        return response()->view("managements.permissions.index");
+        return response()->view("managements.master.permissions.index");
     }
 }

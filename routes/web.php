@@ -1,11 +1,8 @@
 <?php
 
 use App\Enums\PermissionEnum;
-use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\Management\PermissionController;
-use App\Http\Controllers\Management\RoleController;
-use App\Http\Controllers\Management\UserController;
+use App\Http\Controllers\Management\Master\PermissionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,7 +27,9 @@ Route::group([], __DIR__ . "/Auth/RegistrationRoute.php");
 
 Route::middleware("auth")->group(function () {
     Route::prefix("management")->name("management.")->group(function () {
-        Route::get("/permissions", PermissionController::class)->name("permissions.index")->middleware("permission:" . PermissionEnum::PERMISSIONS_INDEX->value);
+        Route::prefix("master")->name("master.")->group(function (){
+            Route::get("/permissions", PermissionController::class)->name("permissions.index")->middleware("permission:" . PermissionEnum::PERMISSIONS_INDEX->value);
+        });
         Route::group([], __DIR__ . "/Management/RoleRoute.php");
         Route::group([], __DIR__ . "/Management/UserRoute.php");
         Route::group([], __DIR__ . "/Management/ProfileRoute.php");

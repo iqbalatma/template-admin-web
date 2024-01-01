@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Managements;
+namespace App\Services\Managements\Master;
 
 use App\Contracts\Abstracts\Services\BaseService;
 use App\Repositories\PermissionRepository;
@@ -14,7 +14,8 @@ class PermissionService extends BaseService
         $this->repository = new PermissionRepository();
         $this->breadcrumbs = [
             "Management" => "#",
-            "Permissions" => route('management.permissions.index')
+            "Master" => "#",
+            "Permissions" => route('management.master.permissions.index')
         ];
     }
 
