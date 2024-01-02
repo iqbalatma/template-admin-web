@@ -11,6 +11,7 @@
           type="image/png">
     <link rel="stylesheet" href="{{asset('mazer/assets/compiled/css/app.css')}}">
     <link rel="stylesheet" href="{{asset('mazer/assets/compiled/css/app-dark.css')}}">
+    @vite('resources/css/app.css')
     @stack("styles")
 </head>
 
@@ -59,6 +60,7 @@
 <script src="{{asset('mazer/assets/static/js/components/dark.js')}}"></script>
 <script src="{{asset('mazer/assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
 <script src="{{asset('mazer/assets/compiled/js/app.js')}}"></script>
+@vite('resources/js/app.js')
 @stack("scripts")
 </body>
 </html>
