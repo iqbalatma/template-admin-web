@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Management;
+namespace App\Http\Controllers\Management\Master;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Managements\Roles\UpdateRoleRequest;
-use App\Services\Managements\RoleService;
+use App\Http\Requests\Management\Master\Roles\UpdateRoleRequest;
+use App\Services\Managements\Master\RoleService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 
@@ -19,7 +19,7 @@ class RoleController extends Controller
     public function index(RoleService $service): Response
     {
         viewShare($service->getAllData());
-        return response()->view("managements.roles.index");
+        return response()->view("management.master.roles.index");
     }
 
 
@@ -36,7 +36,7 @@ class RoleController extends Controller
         if ($this->isError($response)) return $this->getErrorResponse();
         viewShare($response);
 
-        return response()->view("managements.roles.edit");
+        return response()->view("management.master.roles.edit");
     }
 
 
@@ -54,6 +54,6 @@ class RoleController extends Controller
 
         if ($this->isError($response)) return $this->getErrorResponse();
 
-        return redirect()->route("management.roles.index")->with("success", ucfirst(trans("managements/roles.messages.updateSuccess")));
+        return redirect()->route("management.master.roles.index")->with("success", ucfirst(trans("managements/roles.messages.updateSuccess")));
     }
 }

@@ -17,6 +17,6 @@ class PermissionController extends Controller
     public function __invoke(PermissionService $service): Response
     {
         viewShare($service->getAllData());
-        return response()->view("managements.master.permissions.index");
+        return response()->view("management.master.permissions.index");
     }
 }

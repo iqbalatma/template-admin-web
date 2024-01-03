@@ -6,6 +6,7 @@ use App\Contracts\Abstracts\Services\BaseService;
 use App\Models\User;
 use App\Repositories\RoleRepository;
 use App\Repositories\UserRepository;
+use App\Services\Managements\Master\RoleService;
 use Exception;
 use Iqbalatma\LaravelServiceRepo\Exceptions\EmptyDataException;
 

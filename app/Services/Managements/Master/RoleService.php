@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Services\Managements;
+namespace App\Services\Managements\Master;
 
 use App\Contracts\Abstracts\Services\BaseService;
 use App\Models\Role;
 use App\Repositories\PermissionRepository;
 use App\Repositories\RoleRepository;
-use App\Services\Managements\Master\PermissionService;
 use Exception;
 use Iqbalatma\LaravelServiceRepo\Exceptions\EmptyDataException;
 
@@ -20,7 +19,7 @@ class RoleService extends BaseService
         $this->permissionRepo = new PermissionRepository();
         $this->breadcrumbs = [
             "Management" => "#",
-            "Roles" => route('management.roles.index'),
+            "Roles" => route('management.master.roles.index'),
         ];
     }
 

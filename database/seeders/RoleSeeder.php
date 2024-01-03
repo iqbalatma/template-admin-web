@@ -22,7 +22,10 @@ class RoleSeeder extends Seeder
         Schema::enableForeignKeyConstraints();
 
         foreach (RoleEnum::cases() as $key => $role) {
-            Role::create(["name" => $role->value]);
+            Role::create([
+                "name" => $role->value,
+                "is_mutable" => false
+            ]);
         }
     }
 }
