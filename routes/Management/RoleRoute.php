@@ -1,5 +1,5 @@
 <?php
 
-use App\Enums\PermissionEnum;
+use App\Enums\Permission;
 use Illuminate\Support\Facades\Route;
 

@@ -1,3 +1,4 @@
+@php use App\Enums\Role; @endphp
 <x-dashboard.layout>
     <div class="row">
         <div class="col-12">
@@ -21,7 +22,7 @@
                                     <td>{{ $role->formattedName }}</td>
                                     <td>{{ $role->updated_at }}</td>
                                     <td>
-                                        @if($role->is_mutable)
+                                        @if($role->is_mutable && $role->name !== Role::SUPERADMIN->value)
                                             <a href="{{ route('management.master.roles.edit', $role->id) }}"
                                                class="btn btn-success">Edit</a>
                                         @else

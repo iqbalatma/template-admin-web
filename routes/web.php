@@ -1,6 +1,6 @@
 <?php
 
-use App\Enums\PermissionEnum;
+use App\Enums\Permission;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Management\Master\PermissionController;
 use App\Http\Controllers\Management\Master\RoleController;
@@ -29,11 +29,11 @@ Route::group([], __DIR__ . "/Auth/RegistrationRoute.php");
 Route::middleware("auth")->group(function () {
     Route::prefix("management")->name("management.")->group(function () {
         Route::prefix("master")->name("master.")->group(function (){
-            Route::get("/permissions", PermissionController::class)->name("permissions.index")->middleware("permission:" . PermissionEnum::PERMISSIONS_INDEX->value);
+            Route::get("/permissions", PermissionController::class)->name("permissions.index")->middleware("permission:" . Permission::PERMISSIONS_INDEX->value);
             Route::prefix("roles")->name("roles.")->controller(RoleController::class)->group(function (){
-                Route::get("/", "index")->name("index")->middleware("permission:".PermissionEnum::ROLES_INDEX->value);
-                Route::get("/{id}", "edit")->name("edit")->middleware("permission:".PermissionEnum::ROLES_UPDATE->value);
-                Route::put("/{id}", "update")->name("update")->middleware("permission:".PermissionEnum::ROLES_UPDATE->value);;
+                Route::get("/", "index")->name("index")->middleware("permission:".Permission::ROLES_INDEX->value);
+                Route::get("/{id}", "edit")->name("edit")->middleware("permission:".Permission::ROLES_UPDATE->value);
+                Route::put("/{id}", "update")->name("update")->middleware("permission:".Permission::ROLES_UPDATE->value);;
             });
 
         });

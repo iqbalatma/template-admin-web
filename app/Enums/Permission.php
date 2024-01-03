@@ -9,7 +9,7 @@ use ArchTech\Enums\Values;
 use App\Enums\MetaProperties\{Description, FeatureGroup};
 
 #[Meta(Description::class, FeatureGroup::class)]
-enum PermissionEnum: string
+enum Permission: string
 {
     use InvokableCases;
     use Values;

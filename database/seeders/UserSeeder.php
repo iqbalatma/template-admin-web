@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Enums\RoleEnum;
+use App\Enums\Role;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -36,11 +36,11 @@ class UserSeeder extends Seeder
             $createdUser = User::create($user);
 
             if ($createdUser->email === "iqbalatma@gmail.com") {
-                $createdUser->assignRole(RoleEnum::SUPERADMIN->value);
+                $createdUser->assignRole(Role::SUPERADMIN->value);
             }
 
             if ($createdUser->email === "admin@gmail.com") {
-                $createdUser->assignRole(RoleEnum::ADMIN->value);
+                $createdUser->assignRole(Role::ADMIN->value);
             }
         }
 
