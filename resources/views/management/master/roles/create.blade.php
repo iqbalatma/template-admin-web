@@ -7,10 +7,10 @@
                         <h5 class="card-title mb-4">All Data Roles</h5>
 
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Role : {{ $role->formatted_name }}</li>
-                            <li class="list-group-item">Last Updated : {{ $role->updated_at }}</li>
+                            <li class="list-group-item">Role : </li>
+                            <li class="list-group-item">Last Updated : </li>
                         </ul>
-                        <form id="roles.update" action="{{ route('management.master.roles.update', $role->id) }}" method="POST">
+                        <form id="roles.update" action="" method="POST">
                             @csrf
                             @method("PUT")
                             <div class="permission mt-4">

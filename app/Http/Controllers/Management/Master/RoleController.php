@@ -24,6 +24,16 @@ class RoleController extends Controller
 
 
     /**
+     * @param RoleService $service
+     * @return Response
+     */
+    public function create(RoleService $service):Response
+    {
+        viewShare($service->getCreateData());
+        return response()->view("management.master.roles.create");
+    }
+
+    /**
      * Use to show form data edit
      *
      * @param RoleService $service

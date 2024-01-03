@@ -22,6 +22,8 @@
                                     <td>{{ $role->formattedName }}</td>
                                     <td>{{ $role->updated_at }}</td>
                                     <td>
+                                        <a href="{{ route('management.master.roles.edit', $role->id) }}"
+                                           class="btn btn-success">Edit</a>
                                         @if($role->is_mutable && $role->name !== Role::SUPERADMIN->value)
                                             <a href="{{ route('management.master.roles.edit', $role->id) }}"
                                                class="btn btn-success">Edit</a>

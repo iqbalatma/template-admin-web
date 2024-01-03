@@ -111,6 +111,17 @@ class RoleService extends BaseService
         return $response;
     }
 
+    public function getCreateData():array
+    {
+        $this->addBreadCrumbs([
+            "Create" => "#"
+        ]);
+        return [
+            "title" => "Create Role",
+            "permissions" => $this->permissionRepo->getAllData()->groupBy("feature"),
+            "breadcrumbs" => $this->getBreadcrumbs(),
+        ];
+    }
 
 
     /**

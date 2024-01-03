@@ -24,6 +24,9 @@ enum Permission: string
     #[Description("can update data roles")] #[FeatureGroup("roles")]
     case ROLES_UPDATE = "roles.update";
 
+    #[Description("can create data roles")] #[FeatureGroup("roles")]
+    case ROLES_STORE = "roles.store";
+
 
     #[Description("can show all data user")] #[FeatureGroup("users")]
     case USERS_INDEX = "users.index";
