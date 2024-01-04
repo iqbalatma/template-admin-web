@@ -5,11 +5,9 @@
             <div class="card">
                 <div class="card-content">
                     <div class="card-body">
-                        <div class="d-grid gap-2 d-md-flex justify-content-between">
-                            <h5 class="card-title mb-4">{{ $cardTitle }}</h5>
-                            <a href="{{route('management.master.roles.create')}}" class="btn btn-primary icon icon-left">
-                                <i data-feather="plus-square"></i> Create
-                            </a>
+                        <h5 class="card-title mb-4">{{ $cardTitle }}</h5>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <x-atoms.button-create :url="route('management.master.roles.create')" />
                         </div>
                         <table class="table table-striped">
                             <thead>
@@ -28,10 +26,7 @@
                                     <td>{{ $role->updated_at }}</td>
                                     <td>
                                         @if($role->is_mutable && $role->name !== Role::SUPERADMIN->value)
-                                            <a href="{{ route('management.master.roles.edit', $role->id) }}"
-                                               class="btn btn-success icon icon-left">
-                                                <i data-feather="edit"></i> Edit
-                                            </a>
+                                            <x-atoms.button-edit :url="route('management.master.roles.edit', $role->id)" />
                                         @else
                                             Data Is No Mutable
                                         @endif

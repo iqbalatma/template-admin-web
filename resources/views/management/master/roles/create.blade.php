@@ -38,13 +38,8 @@
                 </div>
                 <div class="card-footer">
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <a href="{{ route('management.master.roles.index') }}" class="btn btn-danger me-md-2"
-                           type="button">
-                            <i data-feather="corner-down-left"></i> Back
-                        </a>
-                        <button type="submit" form="roles.store" class="btn btn-success icon icon-left">
-                            <i data-feather="save"></i> Save
-                        </button>
+                        <x-atoms.button-back :url="route('management.master.roles.index')" />
+                        <x-atoms.button-save form="roles.store" />
                     </div>
                 </div>
             </div>
