@@ -65,7 +65,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <x-save-button></x-save-button>
+                            <x-atoms.button-save />
                         </div>
                     </form>
                 </div>

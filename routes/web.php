@@ -4,6 +4,7 @@ use App\Enums\Permission;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Management\Master\PermissionController;
 use App\Http\Controllers\Management\Master\RoleController;
+use App\Http\Controllers\Management\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,7 +41,11 @@ Route::middleware("auth")->group(function () {
 
         });
         Route::group([], __DIR__ . "/Management/UserRoute.php");
-        Route::group([], __DIR__ . "/Management/ProfileRoute.php");
+
+        Route::prefix("profiles")->name("profiles.")->controller(ProfileController::class)->group(function (){
+            Route::get("", "edit")->name("edit");
+            Route::patch("", "update")->name("update");
+        });
     });
 
     Route::get("images/{path}", \App\Http\Controllers\ImageController::class)->name("images");
