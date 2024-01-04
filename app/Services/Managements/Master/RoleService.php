@@ -141,7 +141,9 @@ class RoleService extends BaseService
     public function addNewData(array $requestedData):array
     {
         try {
-            $this->repository->addNewData($requestedData);
+            /** @var Role $role */
+            $role = $this->repository->addNewData($requestedData);
+            $role->syncPermissions($requestedData["permissions"] ?? []);
             $response = [
                 "success" => true,
             ];

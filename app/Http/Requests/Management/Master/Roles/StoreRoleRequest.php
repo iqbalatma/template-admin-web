@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\Management\Master\Roles;
 
+use App\Enums\Table;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreRoleRequest extends FormRequest
 {
@@ -22,7 +24,8 @@ class StoreRoleRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "name" => "required|max:128"
+            "name" => "required|max:128",
+            "permissions.*" => [Rule::exists(Table::PERMISSIONS->value, "id")],
         ];
     }
 }

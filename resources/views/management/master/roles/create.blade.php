@@ -23,7 +23,7 @@
                                     @foreach($permissionGroup as $subKey => $permission)
                                         <div class="form-check form-switch form-check-inline">
                                             <input name="permissions[]" class="form-check-input" type="checkbox"
-                                                   value="{{ $permission->name }}" @if($permission->is_active) checked
+                                                   value="{{ $permission->id }}" @if($permission->is_active) checked
                                                    @endif id="permission{{ $permission->id }}">
                                             <label class="form-check-label"
                                                    for="permission{{ $permission->id }}">{{ $permission->description }}</label>
