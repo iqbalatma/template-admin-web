@@ -20,7 +20,7 @@
                                     @foreach($permissionGroup as $subKey => $permission)
                                         <div class="form-check form-switch form-check-inline">
                                             <input name="permissions[]" class="form-check-input" type="checkbox"
-                                                   value="{{ $permission->name }}" @if($permission->is_active) checked
+                                                   value="{{ $permission->id }}" @if($permission->is_active) checked
                                                    @endif id="permission{{ $permission->id }}">
                                             <label class="form-check-label"
                                                    for="permission{{ $permission->id }}">{{ $permission->description }}</label>
@@ -35,8 +35,13 @@
                 </div>
                 <div class="card-footer">
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <a href="{{ route('management.master.roles.index') }}" class="btn btn-danger me-md-2" type="button">Back</a>
-                        <button type="submit" form="roles.update" class="btn btn-success me-md-2">Update</button>
+                        <a href="{{ route('management.master.roles.index') }}" class="btn btn-danger me-md-2"
+                           type="button">
+                            <i data-feather="corner-down-left"></i> Back
+                        </a>
+                        <button type="submit" form="roles.store" class="btn btn-success icon icon-left">
+                            <i data-feather="save"></i> Update
+                        </button>
                     </div>
                 </div>
             </div>

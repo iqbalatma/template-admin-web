@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Management\Master;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Management\Master\Roles\StoreRoleRequest;
 use App\Http\Requests\Management\Master\Roles\UpdateRoleRequest;
 use App\Services\Managements\Master\RoleService;
 use Illuminate\Http\RedirectResponse;
@@ -65,5 +66,17 @@ class RoleController extends Controller
         if ($this->isError($response)) return $this->getErrorResponse();
 
         return redirect()->route("management.master.roles.index")->with("success", ucfirst(trans("managements/roles.messages.updateSuccess")));
+    }
+
+    /**
+     * @param RoleService $service
+     * @param StoreRoleRequest $request
+     * @return RedirectResponse
+     */
+    public function store(RoleService $service, StoreRoleRequest $request):RedirectResponse
+    {
+        $response = $service->addNewData($request->validated());
+        if ($this->isError($response)) return $this->getErrorResponse();
+        return redirect()->route("management.master.roles.index")->with("success", "Add new role successfully");
     }
 }

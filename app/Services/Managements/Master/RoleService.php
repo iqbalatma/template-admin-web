@@ -68,6 +68,9 @@ class RoleService extends BaseService
                 "role" => $role,
                 "permissions" => $permissions,
                 "breadcrumbs" => $this->getBreadcrumbs(),
+                "pageTitle" => ucwords(trans("managements/roles.title")),
+                "pageDescription" => ucfirst(trans("managements/roles.subTitle")),
+                "cardTitle" => ucwords(trans("managements/roles.cardTitle")),
             ];
         } catch (EmptyDataException $e) {
             $response = [
@@ -111,7 +114,11 @@ class RoleService extends BaseService
         return $response;
     }
 
-    public function getCreateData():array
+
+    /**
+     * @return array
+     */
+    public function getCreateData(): array
     {
         $this->addBreadCrumbs([
             "Create" => "#"
@@ -120,9 +127,30 @@ class RoleService extends BaseService
             "title" => "Create Role",
             "permissions" => $this->permissionRepo->getAllData()->groupBy("feature"),
             "breadcrumbs" => $this->getBreadcrumbs(),
+            "pageTitle" => ucwords(trans("managements/roles.title")),
+            "pageDescription" => ucfirst(trans("managements/roles.subTitle")),
+            "cardTitle" => ucwords(trans("managements/roles.cardTitle")),
         ];
     }
 
+
+    /**
+     * @param array $requestedData
+     * @return true[]
+     */
+    public function addNewData(array $requestedData):array
+    {
+        try {
+            $this->repository->addNewData($requestedData);
+            $response = [
+                "success" => true,
+            ];
+        } catch (Exception $e) {
+            $response = getDefaultErrorResponse($e);
+        }
+
+        return $response;
+    }
 
     /**
      * @param object $roles

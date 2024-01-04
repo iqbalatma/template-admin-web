@@ -5,7 +5,12 @@
             <div class="card">
                 <div class="card-content">
                     <div class="card-body">
-                        <h5 class="card-title mb-4">{{ $cardTitle }}</h5>
+                        <div class="d-grid gap-2 d-md-flex justify-content-between">
+                            <h5 class="card-title mb-4">{{ $cardTitle }}</h5>
+                            <a href="{{route('management.master.roles.create')}}" class="btn btn-primary icon icon-left">
+                                <i data-feather="plus-square"></i> Create
+                            </a>
+                        </div>
                         <table class="table table-striped">
                             <thead>
                             <tr>

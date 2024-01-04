@@ -4,15 +4,15 @@
             <div class="card">
                 <div class="card-content">
                     <div class="card-body">
-                        <h5 class="card-title mb-4">All Data Roles</h5>
+                        <h5 class="card-title mb-4">Add new data role</h5>
                         <form id="roles.store" action="{{route('management.master.roles.store')}}" method="POST">
                             @csrf
                             <div class="row g-4">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label for="first-name-column">First Name</label>
-                                        <input type="text" id="first-name-column" class="form-control mt-4"
-                                               placeholder="First Name" name="fname-column">
+                                        <label for="name">Role Name</label>
+                                        <input type="text" id="name" class="form-control mt-4"
+                                               placeholder="Role name" name="name">
                                     </div>
                                 </div>
                             </div>
@@ -45,8 +45,6 @@
                         <button type="submit" form="roles.store" class="btn btn-success icon icon-left">
                             <i data-feather="save"></i> Save
                         </button>
-
-
                     </div>
                 </div>
             </div>
