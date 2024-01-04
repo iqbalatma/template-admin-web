@@ -51,7 +51,6 @@
                     class="sidebar-item has-sub @if(
                             request()->routeIs("management.master.permissions*") ||
                             request()->routeIs("management.master.roles*")
-
                     ) active @endif">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-stack"></i>
@@ -70,14 +69,19 @@
                 </li>
 
 
+                <li class="sidebar-item @if(request()->routeIs('management.users*')) active @endif">
+                    <a href="{{route('management.users.index')}}" class='sidebar-link'>
+                        <i class="bi bi-people-fill"></i>
+                        <span>Users</span>
+                    </a>
+                </li>
+
                 <li
                     class="sidebar-item  ">
                     <a href="/mazer/index.html" class='sidebar-link'>
                         <i class="bi bi-grid-fill"></i>
                         <span>Dashboard</span>
                     </a>
-
-
                 </li>
 
                 <li

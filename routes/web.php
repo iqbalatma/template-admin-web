@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Management\Master\PermissionController;
 use App\Http\Controllers\Management\Master\RoleController;
 use App\Http\Controllers\Management\ProfileController;
+use App\Http\Controllers\Management\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,9 +39,14 @@ Route::middleware("auth")->group(function () {
                 Route::get("/{id}", "edit")->name("edit")->middleware("permission:".Permission::ROLES_UPDATE->value);
                 Route::put("/{id}", "update")->name("update")->middleware("permission:".Permission::ROLES_UPDATE->value);
             });
-
         });
-        Route::group([], __DIR__ . "/Management/UserRoute.php");
+
+        Route::prefix("users")->name("users.")->controller(UserController::class)->group(function (){
+            Route::get("/", "index")->name("index")->middleware("permission:".Permission::USERS_INDEX->value);
+            Route::get("/{id}", "edit")->name("edit")->middleware("permission:".Permission::USERS_EDIT->value);
+            Route::put("/{id}", "update")->name("update")->middleware("permission:".Permission::USERS_UPDATE->value);
+        });
+
 
         Route::prefix("profiles")->name("profiles.")->controller(ProfileController::class)->group(function (){
             Route::get("", "edit")->name("edit");

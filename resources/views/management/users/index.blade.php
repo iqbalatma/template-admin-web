@@ -20,7 +20,9 @@
                                     <td>{{ $users->firstItem()+$key }}</td>
                                     <td>{{ $user->name}}</td>
                                     <td>{{ $user->email}}</td>
-                                    <td><a href="{{ route('management.users.edit', $user->id) }}" class="btn btn-success">{{ ucwords(trans('general.button.edit')) }}</a></td>
+                                    <td>
+                                        <x-atoms.button-edit :url="route('management.users.edit', $user->id)"/>
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>

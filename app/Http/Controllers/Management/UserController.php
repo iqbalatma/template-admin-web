@@ -19,7 +19,7 @@ class UserController extends Controller
     public function index(UserService $service): Response
     {
         viewShare($service->getAllData());
-        return response()->view("managements.users.index");
+        return response()->view("management.users.index");
     }
 
     /**
@@ -31,10 +31,10 @@ class UserController extends Controller
      */
     public function edit(UserService $service, string $id): Response|RedirectResponse
     {
-        $response = $service->getDataById($id);
+        $response = $service->getEditDataById($id);
         if ($this->isError($response)) return $this->getErrorResponse();
         viewShare($response);
-        return response()->view("managements.users.edit");
+        return response()->view("management.users.edit");
     }
 
 

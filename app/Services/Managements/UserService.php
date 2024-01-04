@@ -34,8 +34,9 @@ class UserService extends BaseService
         return [
             "title" => ucfirst(trans("managements/users.title")),
             "pageTitle" => ucfirst(trans("managements/users.title")),
+            "pageDescription" => "All data user",
             "cardTitle" => ucwords(trans("managements/users.cardTitle")),
-            "breadcrumbs"=> $this->getBreadcrumbs(),
+            "breadcrumbs" => $this->getBreadcrumbs(),
             "users" => $this->repository->getAllDataPaginated()
         ];
     }
@@ -45,7 +46,7 @@ class UserService extends BaseService
      * @param string $id
      * @return array
      */
-    public function getDataById(string $id): array
+    public function getEditDataById(string $id): array
     {
         try {
             $this->checkData($id);
@@ -55,16 +56,17 @@ class UserService extends BaseService
             RoleService::setActiveRole($roles, $user);
 
             $this->addBreadCrumbs([
-                "Edit" => route('users.edit', $id)
+                "Edit" => route('management.users.edit', $id)
             ]);
 
             $response = [
                 "success" => true,
                 "subTitle" => ucfirst(trans("managements/users.subTitle")),
                 "title" => ucfirst(trans("managements/users.title")),
+                "pageDescription" => "Data user by id",
                 "user" => $user,
                 "roles" => $roles,
-                "breadcrumbs"=> $this->getBreadcrumbs(),
+                "breadcrumbs" => $this->getBreadcrumbs(),
             ];
         } catch (EmptyDataException $e) {
             $response = [

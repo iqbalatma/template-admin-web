@@ -12,7 +12,7 @@
                             <li class="list-group-item">Last Updated : {{ $user->updated_at }}</li>
                         </ul>
 
-                        <form id="roles.update" action="{{ route('users.update', $user->id) }}" method="POST">
+                        <form id="users.update" action="{{ route('management.users.update', $user->id) }}" method="POST">
                             @csrf
                             @method("PUT")
                             <div class="role mt-4">
@@ -27,8 +27,8 @@
                     </div>
                     <div class="card-footer">
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <a href="{{ route('users.index') }}" class="btn btn-danger me-md-2">Cancel</a>
-                            <button form="roles.update" class="btn btn-success" type="submit">Update</button>
+                            <x-atoms.button-back :url="route('management.users.index')" />
+                            <x-atoms.button-update form="users.update" />
                         </div>
                     </div>
                 </div>
