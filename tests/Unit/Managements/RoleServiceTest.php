@@ -4,9 +4,8 @@ namespace Tests\Unit\Managements;
 
 use App\Models\Permission;
 use App\Models\Role;
-use App\Services\Managements\RoleService;
+use App\Services\Managements\Master\RoleService;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
 use Tests\TestCase;
 

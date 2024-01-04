@@ -19,7 +19,7 @@ class ProfileController extends Controller
         $response = $service->getEditData();
         if ($this->isError($response, "dashboard")) return $this->getErrorResponse();
         viewShare($response);
-        return response()->view("managements.profiles.edit");
+        return response()->view("management.profiles.edit");
     }
 
 

@@ -17,7 +17,8 @@ class AuthController extends Controller
      */
     public function login(AuthService $service): Response
     {
-        return response()->view('auth.login', $service->getDataLogin());
+        viewShare($service->getLoginData());
+        return response()->view('auth.login');
     }
 
     /**
@@ -41,7 +42,7 @@ class AuthController extends Controller
      * @param Request $request
      * @return RedirectResponse
      */
-    public function logout(AuthService $service, Request $request):RedirectResponse
+    public function logout(AuthService $service, Request $request): RedirectResponse
     {
         $service->logout();
         $request->session()->invalidate();

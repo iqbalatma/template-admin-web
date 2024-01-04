@@ -13,6 +13,14 @@ use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
+/**
+ * @property string $id
+ * @property string $email
+ * @property string $password
+ * @property string $address
+ * @property string $phone
+ * @property string $profile_image
+ */
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, HasRoles, HasUuids;
@@ -51,9 +59,4 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    public function password():Attribute
-    {
-        return Attribute::make(set: fn ($value) => Hash::make($value));
-    }
 }
