@@ -3,43 +3,57 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ResetPasswordRequest;
-use App\Http\Requests\ResetTokenRequest;
-use App\Http\Services\Auth\ForgotPasswordService;
-use Illuminate\Http\Request;
+use App\Http\Requests\Auth\RequestTokenRequest;
+use App\Http\Requests\Auth\ResetPasswordRequest;
+use App\Services\Auth\ForgotPasswordService;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 
 class ForgotPasswordController extends Controller
 {
-    public function index(ForgotPasswordService $service): Response
+    /**
+     * @param ForgotPasswordService $service
+     * @return Response
+     */
+    public function showRequestForgotPassword(ForgotPasswordService $service): Response
     {
-        return response()->view("auth.forgot-password");
+        viewShare($service->getShowRequestPasswordData());
+        return response()->view("auth.show-forgot-password-request");
     }
 
-    public function requestToken(ForgotPasswordService $service, ResetTokenRequest $request)
+    /**
+     * @param ForgotPasswordService $service
+     * @param RequestTokenRequest $request
+     * @return RedirectResponse
+     */
+    public function requestToken(ForgotPasswordService $service, RequestTokenRequest $request): RedirectResponse
     {
-        $reseted = $service->requestToken($request->validated());
-        if ($reseted) {
-            return redirect()->back()->with("success", "Reset password link has been sent to your email !");
-        }
-        return redirect()->back()->with("failed", "Reset password failed !");
+        $response = $service->requestResetPassword($request->validated());
+        if ($this->isError($response)) return $this->getErrorResponse();
+        return redirect()->back()->with("success", "Reset password link has been sent to your email !");
     }
 
-    public function resetPassword(ForgotPasswordService $service, ResetPasswordRequest $request)
+    /**
+     * @param ForgotPasswordService $service
+     * @return Response
+     */
+    public function showResetPassword(ForgotPasswordService $service): Response
     {
-        $reseted = $service->resetPassword($request->validated());
-        if ($reseted) {
-            return redirect()->route("auth.login")->with("success", "Reset password successfully !");
-        }
-        return redirect()->route("auth.login")->with("failed", "Reset password failed !");
+        $response = $service->getShowResetPasswordData();
+        viewShare($response);
+        return response()->view("auth.show-reset-password");
     }
 
-    public function showResetPassword(string $email, string $token): Response
+    /**
+     * @param ForgotPasswordService $service
+     * @param ResetPasswordRequest $request
+     * @return RedirectResponse
+     */
+    public function resetPassword(ForgotPasswordService $service, ResetPasswordRequest $request): RedirectResponse
     {
-        return response()->view("auth.reset-password", [
-            "title" => "Reset Password",
-            "email" => $email,
-            "token" => $token
-        ]);
+        $response = $service->resetPassword($request->validated());
+        if ($this->isError($response)) return $this->getErrorResponse();
+
+        return redirect()->route('auth.login')->with("success", "Reset password successfully");
     }
 }

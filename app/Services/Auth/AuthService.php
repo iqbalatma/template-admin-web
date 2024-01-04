@@ -2,9 +2,9 @@
 
 namespace App\Services\Auth;
 
+use App\Contracts\Abstracts\Services\BaseService;
 use App\Contracts\Interfaces\Auth\AuthServiceInterface;
 use Illuminate\Support\Facades\Auth;
-use Iqbalatma\LaravelServiceRepo\BaseService;
 
 
 class AuthService extends BaseService implements AuthServiceInterface
@@ -15,7 +15,13 @@ class AuthService extends BaseService implements AuthServiceInterface
      */
     public function authenticate(array $requestedData): array
     {
-        $response = Auth::attempt($requestedData, $requestedData['rememberme'] ?? false) ?
+        $rememberme = false;
+        if (isset($requestedData["rememberme"]) && $requestedData["rememberme"] === "on") {
+            $rememberme = true;
+            unset($requestedData["rememberme"]);
+        }
+
+        $response = Auth::attempt($requestedData, $rememberme) ?
             ["success" => true] :
             ["success" => false, "message" => "Invalid username or password"];
         return $response;
@@ -24,7 +30,7 @@ class AuthService extends BaseService implements AuthServiceInterface
     /**
      * @return array
      */
-    public function getDataLogin(): array
+    public function getLoginData(): array
     {
         return [
             "title" => "Login"

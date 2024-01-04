@@ -26,7 +26,7 @@ class AuthenticateRequest extends FormRequest
         return [
             "email" => "required|email",
             "password" => "required",
-            "rememberme" => "in:1,0"
+            "rememberme" => ""
         ];
     }
 }

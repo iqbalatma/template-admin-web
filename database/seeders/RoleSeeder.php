@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Enums\RoleEnum;
+use App\Enums\Role as RoleEnum;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Schema;
@@ -22,7 +22,10 @@ class RoleSeeder extends Seeder
         Schema::enableForeignKeyConstraints();
 
         foreach (RoleEnum::cases() as $key => $role) {
-            Role::create(["name" => $role->value]);
+            Role::create([
+                "name" => $role->value,
+                "is_mutable" => false
+            ]);
         }
     }
 }

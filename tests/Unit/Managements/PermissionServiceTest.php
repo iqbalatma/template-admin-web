@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Managements;
 
-use App\Services\Managements\PermissionService;
+use App\Services\Managements\Master\PermissionService;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Tests\TestCase;
 
